@@ -48,3 +48,4 @@ Thumbs.db
 
 # Spotify credentials
 get-spotify-token.ps1
+.vercel
