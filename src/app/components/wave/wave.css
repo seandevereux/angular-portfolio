@@ -1,0 +1,53 @@
+.wave-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(300% + 1.3px);
+  height: 100px;
+}
+
+.wave-header {
+  top: 0;
+  left: 0;
+}
+
+.wave-about-top {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.wave-about-top svg {
+  width: calc(149% + 1.3px);
+  height: 69px;
+  transform: rotateY(180deg);
+}
+
+.wave-about-bottom {
+  top: 0;
+  left: 0;
+}
+
+.wave-about-bottom svg {
+  width: calc(149% + 1.3px);
+  height: 69px;
+  transform: rotateY(180deg);
+}
+
+.wave-footer {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.wave-footer svg {
+  width: calc(152% + 1.3px);
+  height: 63px;
+  transform: rotateY(180deg);
+}

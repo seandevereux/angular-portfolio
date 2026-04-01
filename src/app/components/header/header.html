@@ -1,0 +1,39 @@
+<section class="header" id="homeSection">
+  <nav [class.sticky]="isSticky" id="navID">
+    <a (click)="scrollToSection('homeSection')">
+      <img src="images/logo.png" alt="Logo"/>
+    </a>
+    <div class="nav-links" [class.mobileNavRight]="mobileNavOpen" id="navLinks">
+      <fa-icon 
+        [icon]="faClose" 
+        class="icone hideicon white" 
+        (click)="toggleMobileNav()">
+      </fa-icon>
+      <ul>
+        <li><a (click)="scrollToSection('homeSection')" class="scroll-to">HOME</a></li>
+        <li><a (click)="scrollToSection('aboutSection')" class="scroll-to">ABOUT</a></li>
+        <li><a (click)="scrollToSection('skillsSection')" class="scroll-to">SKILLS</a></li>
+        <li><a (click)="scrollToSection('projectsSection')" class="scroll-to">PROJECTS</a></li>
+      </ul>
+    </div>
+    <fa-icon 
+      [icon]="faList" 
+      class="icone showicon white" 
+      (click)="toggleMobileNav()">
+    </fa-icon>
+  </nav>
+  <div class="text-box">
+    <h1>SEAN DEVEREUX</h1>
+    <p class="intro-text">
+      <span class="hello-text">Hello! I am <span class="name-highlight">Sean</span>,</span><br/>
+      <span class="typing-text">{{ typedText }}<span class="cursor">|</span></span>
+    </p>
+    <br/>
+    <a (click)="scrollToSection('projectsSection')" class="scroll-to hero-btn">
+      View My Work
+    </a>
+    <a href="images/cv.pdf" target="_blank" class="hero-btn" style="margin-left: 15px;">
+      View My CV
+    </a>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+.about-us {
+  width: 80%;
+  margin: auto;
+  padding-top: 80px;
+  padding-bottom: 50px;
+}
+
+.about-us h1 {
+  text-align: center;
+}
+
+.about-col {
+  flex-basis: 48%;
+  padding: 30px 2px;
+}
+
+.about-col img {
+  width: 100%;
+  border-radius: 10px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  clip-path: url(#squiggle);
+}
+
+.squiggle-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.about-col h1 {
+  padding: 0;
+}
+
+.about-col p {
+  padding: 15px 0 25px;
+  color: var(--text-black);
+  font-size: 14px;
+  font-weight: 300;
+  text-align: left;
+}
+
+.about-col h2 {
+  color: var(--text-black);
+}
+
+.about-col a {
+  cursor: pointer;
+}
