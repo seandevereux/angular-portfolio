@@ -1,48 +1,123 @@
-.about-us {
-  width: 80%;
-  margin: auto;
-  padding-top: 80px;
-  padding-bottom: 50px;
-}
-
-.about-us h1 {
-  text-align: center;
-}
-
-.about-col {
-  flex-basis: 48%;
-  padding: 30px 2px;
-}
-
-.about-col img {
+.about {
   width: 100%;
-  border-radius: 10px;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-  clip-path: url(#squiggle);
+  padding: var(--section-padding);
+  background: #f9f9f9;
 }
 
-.squiggle-svg {
-  position: absolute;
-  width: 0;
-  height: 0;
+.about-container {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 40px;
+  max-width: 90%;
 }
 
-.about-col h1 {
+.photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 8px;
+  background: #d0d0d0;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-black);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.background p {
+  color: #444;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 12px;
   padding: 0;
 }
 
-.about-col p {
-  padding: 15px 0 25px;
-  color: var(--text-black);
+.background strong {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.technologies {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 30px;
+}
+
+.technologies h4 {
   font-size: 14px;
-  font-weight: 300;
-  text-align: left;
-}
-
-.about-col h2 {
+  font-weight: 700;
   color: var(--text-black);
+  margin-bottom: 20px;
 }
 
-.about-col a {
-  cursor: pointer;
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #e8e8e8;
+  border: 1.5px solid transparent;
+  color: #333;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInBadge 0.4s ease forwards;
+  animation-delay: calc(1s + var(--i) * 0.07s);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  cursor: default;
+}
+
+.badge:hover {
+  border-color: var(--primary-color);
+  background: #fff;
+}
+
+@keyframes slideInBadge {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .about {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .photo {
+    max-width: 200px;
+  }
+
+  .tools {
+    column-gap: 30px;
+  }
 }

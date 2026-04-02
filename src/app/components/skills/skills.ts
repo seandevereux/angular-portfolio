@@ -1,14 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SpotifyService, SpotifyTrack } from '../../services/spotify.service';
 import { NgIf } from '@angular/common';
+import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-skills',
-  imports: [NgIf],
+  imports: [NgIf, ScrollAnimateDirective, FontAwesomeModule],
   templateUrl: './skills.html',
   styleUrl: './skills.css',
 })
 export class Skills implements OnInit, OnDestroy {
+  faSpotify = faSpotify;
   currentTrack: SpotifyTrack | null = null;
   private intervalId: any;
 

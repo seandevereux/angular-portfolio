@@ -2,20 +2,33 @@
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
-html, body {
+html {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
   overflow-x: hidden;
+  width: 100%;
 }
 
 /* Color scheme variables */
 :root {
-  --primary-color: #da3d32;
+  --primary-color: #dd3400;
   --secondary-color: #182A47;
   --dark-bg: #131313;
   --text-dark: #777;
   --text-white: #fff;
   --text-black: #000;
+  --section-padding: 80px 5%;
 }
 
 /* Transitions */
@@ -94,4 +107,15 @@ p {
   .row {
     flex-direction: column;
   }
+}
+
+/* Scroll animations - disabled to prevent scroll blocking */
+.scroll-hidden {
+  opacity: 1;
+  transform: none;
+}
+
+.scroll-visible {
+  opacity: 1;
+  transform: none;
 }

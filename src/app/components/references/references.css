@@ -1,8 +1,8 @@
 .references {
-  width: 80%;
-  margin: 100px auto;
+  width: 100%;
+  padding: var(--section-padding);
   text-align: center;
-  padding: 40px 0;
+  box-sizing: border-box;
 }
 
 .references h1 {

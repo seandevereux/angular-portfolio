@@ -1,6 +1,4 @@
-<section class="skills" id="skillsSection">
-  <h1>Skills & Experience</h1>
-  
+<section class="skills" scrollAnimate id="skillsSection">
   <div class="skills-container">
     <div class="spotify-widget">
       <h3>🎵 Listening Now</h3>
@@ -11,7 +9,7 @@
           <div class="track-artist">{{ currentTrack.artist }}</div>
         </div>
         <a [href]="currentTrack.url" target="_blank" class="spotify-link">
-          <span class="spotify-icon">🎧</span>
+          <span class="spotify-icon swaying">🎧</span>
         </a>
       </div>
       <div *ngIf="!currentTrack || !currentTrack.isPlaying" class="spotify-offline">
@@ -19,45 +17,39 @@
         <div class="offline-text">Currently Offline</div>
         <div class="listen-along">listen along when i'm online</div>
       </div>
+      <a href="https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6" target="_blank" class="spotify-logo">
+        <fa-icon [icon]="faSpotify"></fa-icon>
+      </a>
     </div>
 
     <div class="skill-category">
-      <h3>Technical Skills</h3>
-      <div class="skill-items">
-        <div class="skill-item">
-          <span>Angular</span>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span>TypeScript / JavaScript</span>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 95%"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span>Node.js / Express</span>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span>Git / CI/CD</span>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="skill-item">
-          <span>Storybook & Cypress</span>
-          <div class="skill-bar">
-            <div class="skill-level" style="width: 85%"></div>
-          </div>
-        </div>
-      </div>
+      <h3>Career Highlights</h3>
+      <ul class="skill-list">
+        <li>
+          <span class="skill-name">Software Engineer — Fidelity Investments</span>
+          <span class="skill-desc">Building enterprise Angular applications serving millions of users</span>
+        </li>
+        <li>
+          <span class="skill-name">Intern Software Engineer — Fidelity Investments</span>
+          <span class="skill-desc">Created the Mod Strength Dashboard to help improve operational efficiency</span>
+        </li>
+        <li>
+          <span class="skill-name">Intern Software Engineer — Croi</span>
+          <span class="skill-desc">Built applications to support the organisation's digital operations</span>
+        </li>
+        <li>
+          <span class="skill-name">GTI QQI Level 5 — 4 Distinctions</span>
+          <span class="skill-desc">Digital Media & Games Development, graduated 2019</span>
+        </li>
+        <li>
+          <span class="skill-name">Open Source & Personal Projects</span>
+          <span class="skill-desc">Actively building and shipping side projects in web & game dev</span>
+        </li>
+      </ul>
     </div>
 
     <div class="education-card">
+      <h2>Education</h2>
       <h3>GTI QQI Level 5</h3>
       <h6>September 2018 to June 2019</h6>
       <p>

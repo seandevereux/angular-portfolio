@@ -1,75 +1,35 @@
-<section class="about-us" id="aboutSection">
-  <svg class="squiggle-svg">
-    <defs>
-      <clipPath id="squiggle" clipPathUnits="objectBoundingBox">
-        <path d="M 0.05,0.02 
-                 Q 0.1,0 0.15,0.02 
-                 Q 0.2,0 0.25,0.02 
-                 Q 0.3,0 0.35,0.02 
-                 Q 0.4,0 0.45,0.02 
-                 Q 0.5,0 0.55,0.02 
-                 Q 0.6,0 0.65,0.02 
-                 Q 0.7,0 0.75,0.02 
-                 Q 0.8,0 0.85,0.02 
-                 Q 0.9,0 0.95,0.02 
-                 Q 1,0.05 0.98,0.1 
-                 Q 1,0.15 0.98,0.2 
-                 Q 1,0.25 0.98,0.3 
-                 Q 1,0.35 0.98,0.4 
-                 Q 1,0.45 0.98,0.5 
-                 Q 1,0.55 0.98,0.6 
-                 Q 1,0.65 0.98,0.7 
-                 Q 1,0.75 0.98,0.8 
-                 Q 1,0.85 0.98,0.9 
-                 Q 1,0.95 0.95,0.98 
-                 Q 0.9,1 0.85,0.98 
-                 Q 0.8,1 0.75,0.98 
-                 Q 0.7,1 0.65,0.98 
-                 Q 0.6,1 0.55,0.98 
-                 Q 0.5,1 0.45,0.98 
-                 Q 0.4,1 0.35,0.98 
-                 Q 0.3,1 0.25,0.98 
-                 Q 0.2,1 0.15,0.98 
-                 Q 0.1,1 0.05,0.98 
-                 Q 0,0.95 0.02,0.9 
-                 Q 0,0.85 0.02,0.8 
-                 Q 0,0.75 0.02,0.7 
-                 Q 0,0.65 0.02,0.6 
-                 Q 0,0.55 0.02,0.5 
-                 Q 0,0.45 0.02,0.4 
-                 Q 0,0.35 0.02,0.3 
-                 Q 0,0.25 0.02,0.2 
-                 Q 0,0.15 0.02,0.1 
-                 Q 0,0.05 0.05,0.02 Z" />
-      </clipPath>
-    </defs>
-  </svg>
-  
-  <h1>About Me</h1>
-  <div class="row">
-    <div class="about-col">
-      <img src="images/about.jpg" alt="About"/>
+<section class="about" scrollAnimate id="aboutSection">
+  <div class="about-container">
+    <div class="photo-wrapper">
+      <img class="photo" src="images/headshot.png" alt="Sean Devereux"/>
     </div>
-    <div class="about-col">
-      <h2>Full-Stack Developer & Problem Solver</h2>
+    <div class="background">
+      <h2 class="title">Background</h2>
+      <h4 class="subtitle">A bit About Me</h4>
       <p>
-        I'm a passionate full-stack developer with a strong foundation in modern web technologies and a proven track record 
-        of delivering high-quality software solutions. My journey in software development has been driven by curiosity, 
-        continuous learning, and a commitment to writing clean, maintainable code.
+        I'm a full-stack developer based in Galway with a passion for building clean,
+        performant web applications. My journey started at GTI where I graduated with
+        4 distinctions in Digital Media & Games Development.
       </p>
       <p>
-        Currently, I work at <strong>Fidelity Investments</strong>, where I contribute to building robust financial technology 
-        solutions that serve millions of users. My role involves developing scalable web applications, collaborating with 
-        cross-functional teams, and implementing best practices in software engineering. This experience has sharpened my 
-        skills in enterprise-level development, agile methodologies, and delivering solutions that meet strict security 
-        and compliance standards.
+        I take into consideration performance, accessibility and user experience while
+        writing reusable and efficient code. I enjoy working across the full stack —
+        from crafting polished UIs to designing scalable backend systems.
       </p>
       <p>
-        I specialize in JavaScript/TypeScript ecosystems, including React, Angular, Node.js, and modern build tools. 
-        I'm also experienced in C# and Unity for game development, which gives me a unique perspective on interactive 
-        user experiences and performance optimization.
+        Currently working at <strong>Fidelity Investments</strong>, where I contribute
+        to enterprise-grade financial technology solutions serving millions of users.
+        My role involves building scalable Angular applications, collaborating with
+        cross-functional teams, and upholding strict security and compliance standards.
       </p>
-      <a (click)="scrollToSection('projectsSection')" class="scroll-to hero-btn blue-btn">View My Work</a>
+      <p>
+        Outside of work I enjoy reading, writing, playing video games and watching UFC & boxing.
+      </p>
     </div>
+  </div>
+
+  <div class="technologies">
+    <h4>My core tools and technologies</h4>
+    <app-tech-marquee></app-tech-marquee>
   </div>
 </section>

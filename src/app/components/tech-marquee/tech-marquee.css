@@ -1,0 +1,101 @@
+.marquee-section {
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 28px;
+  font-size: 22px;
+  color: #555;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.marquee-item:hover {
+  color: var(--primary-color);
+}
+
+.marquee-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Statement card */
+.statement-card {
+  display: none;
+}
+
+.pulse-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.ping {
+  position: absolute;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  opacity: 0.75;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.dot {
+  position: relative;
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  box-shadow: 0 0 12px rgba(24, 42, 71, 0.9);
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.statement-card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  padding: 0;
+  font-weight: 300;
+}

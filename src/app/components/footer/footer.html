@@ -1,4 +1,4 @@
-<section class="footer">
+<section class="footer" scrollAnimate>
   <div class="footerContainer">
     <div class="footerLinks">
       <div class="footerLinkWrapper">
@@ -6,29 +6,25 @@
           <h2>Quick Links</h2>
           <a (click)="scrollToSection('homeSection')">Home</a>
           <a (click)="scrollToSection('aboutSection')">About</a>
+          <a (click)="scrollToSection('skillsSection')">Skills</a>
           <a (click)="scrollToSection('projectsSection')">Projects</a>
-          <a (click)="scrollToSection('homeSection')">Contact</a>
         </div>
         <div class="footerLinkItems">
-          <h2>About us</h2>
-          <a href="https://github.com/seandevereux/Software-Development" target="_blank">Software development repository</a>
-          <a href="https://github.com/seandevereux/Games-Development" target="_blank">Games development repository</a>
-          <a href="https://github.com/seandevereux/Web-Development" target="_blank">Web development repository</a>
-          <a href="https://github.com/seandevereux" target="_blank">Github</a>
+          <h2>Projects</h2>
+          <a (click)="scrollToSection('projectsSection')">Hop</a>
+          <a (click)="scrollToSection('projectsSection')">Eco</a>
+          <a (click)="scrollToSection('projectsSection')">Jump</a>
         </div>
       </div>
       <div class="footerLinkWrapper">
         <div class="footerLinkItems">
-          <h2>Where to reach me?</h2>
-          <a href="#">Discord : seanee#7791</a>
-          <p>email me at : s3an.devereux&#64;gmail.com</p>
+          <h2>Other</h2>
+          <a href="https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6" target="_blank">Spotify</a>
+          <a href="images/cv.pdf" target="_blank">View CV</a>
         </div>
         <div class="footerLinkItems">
-          <h2>Other</h2>
-          <a href="#">Profile (WIP?)</a>
-          <a href="#">Testimonials(WIP?)</a>
-          <a href="#">Career(WIP?)</a>
-          <a href="#">Terms of Service(WIP?)</a>
+          <h2>Where to reach me</h2>
+          <a href="mailto:s3an.devereux@gmail.com">s3an.devereux@gmail.com</a>
         </div>
       </div>
     </div>
@@ -37,19 +33,16 @@
         <div class="footerLogo">
           <a (click)="scrollToSection('homeSection')" id="footerLogo">Sean Devereux</a>
         </div>
-        <p class="websiteRights">Sean Devereux 2022. All rights reserved</p>
+        <p class="websiteRights">Sean Devereux {{ currentYear }}. All rights reserved</p>
         <div class="socialIcons">
-          <a href="https://twitter.com/SeanDevereux_" target="_blank">
-            <fa-icon [icon]="faTwitter" class="socialIconLink"></fa-icon>
-          </a>
-          <a href="https://instagram.com/CreateInstagram" target="_blank">
-            <fa-icon [icon]="faInstagram" class="socialIconLink"></fa-icon>
-          </a>
-          <a href="https://Linkedin.com/linkedin" target="_blank">
+          <a href="https://www.linkedin.com/in/sean-devereux/" target="_blank">
             <fa-icon [icon]="faLinkedin" class="socialIconLink"></fa-icon>
           </a>
           <a href="https://github.com/seandevereux" target="_blank">
             <fa-icon [icon]="faGithub" class="socialIconLink"></fa-icon>
+          </a>
+          <a href="https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6" target="_blank">
+            <fa-icon [icon]="faSpotify" class="socialIconLink"></fa-icon>
           </a>
         </div>
       </div>

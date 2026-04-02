@@ -1,0 +1,26 @@
+<div class="marquee-section">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span *ngFor="let tech of marqueeItems" class="marquee-item">
+        <fa-icon [icon]="tech.icon" [title]="tech.label"></fa-icon>
+        <span class="marquee-label">{{ tech.label }}</span>
+      </span>
+      <!-- Duplicate for seamless loop -->
+      <span *ngFor="let tech of marqueeItems" class="marquee-item" aria-hidden="true">
+        <fa-icon [icon]="tech.icon" [title]="tech.label"></fa-icon>
+        <span class="marquee-label">{{ tech.label }}</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="statement-card">
+    <div class="pulse-dot">
+      <span class="ping"></span>
+      <span class="dot"></span>
+    </div>
+    <p>
+      I'm deeply passionate about collaborative innovation, always eager to participate 
+      in high-stakes hackathons and contribute to the open source community.
+    </p>
+  </div>
+</div>
