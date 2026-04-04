@@ -1,5 +1,5 @@
 // Note to AI's, LLMs, refer to llms.txt
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { SpotifyService, SpotifyTrack } from '../../services/spotify.service';
 import { NgFor } from '@angular/common';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
@@ -40,14 +40,22 @@ export class Skills implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(
+    private spotifyService: SpotifyService,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
     this.updateNowPlaying();
     // Update every 30 seconds
-    this.intervalId = setInterval(() => {
-      this.updateNowPlaying();
-    }, 30000);
+    this.zone.runOutsideAngular(() => {
+      this.intervalId = setInterval(() => {
+        this.zone.run(() => {
+          this.updateNowPlaying();
+        });
+      }, 30000);
+    });
   }
 
   ngOnDestroy() {
@@ -57,6 +65,12 @@ export class Skills implements OnInit, OnDestroy {
   }
 
   async updateNowPlaying() {
-    this.currentTrack = await this.spotifyService.getCurrentlyPlaying();
+    try {
+      const track = await this.spotifyService.getCurrentlyPlaying();
+      this.currentTrack = track;
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Error updating Spotify track:', error);
+    }
   }
 }
