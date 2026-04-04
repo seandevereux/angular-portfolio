@@ -865,7 +865,7 @@
         },
         {
             "name": "EducationCard",
-            "id": "component-EducationCard-0b181be370eefad443076867f7766fe5620a881ebd47ae61273c58e5515eb54e05f909207536006ba901a610730552707953e2ab1d9b2810260ab44cb5ec17aa",
+            "id": "component-EducationCard-b27a442a92f92eab633251fb88f28526eb9fcf2d57a3a7737e27c253e2cce90cee7f028f90e47420b57360aecd44920a886e7d5e1fb3c635ed812a44bca1f440",
             "file": "src/app/components/education-card/education-card.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -880,55 +880,55 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "name": "degree",
-                    "defaultValue": "''",
+                    "name": "activeTab",
+                    "defaultValue": "'college'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "description",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "period",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "resultsLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "title",
-                    "defaultValue": "'Education'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "string",
-                    "decorators": []
+                    "type": "\"college\" | \"projects\" | \"learning\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "setActiveTab",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "\"college\" | \"projects\" | \"learning\"",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "\"college\" | \"projects\" | \"learning\"",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -937,18 +937,21 @@
             "imports": [
                 {
                     "name": "NgIf"
+                },
+                {
+                    "name": "NgFor"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { NgIf } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-education-card',\r\n  imports: [NgIf],\r\n  templateUrl: './education-card.html',\r\n  styleUrl: './education-card.css',\r\n})\r\nexport class EducationCard {\r\n  @Input() title: string = 'Education';\r\n  @Input() degree: string = '';\r\n  @Input() period: string = '';\r\n  @Input() description: string = '';\r\n  @Input() resultsLink?: string;\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { NgIf, NgFor } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-education-card',\r\n  imports: [NgIf, NgFor],\r\n  templateUrl: './education-card.html',\r\n  styleUrl: './education-card.css',\r\n})\r\nexport class EducationCard {\r\n  activeTab: 'college' | 'projects' | 'learning' = 'college';\r\n\r\n  setActiveTab(tab: 'college' | 'projects' | 'learning') {\r\n    this.activeTab = tab;\r\n  }\r\n}\r\n",
             "styleUrl": "./education-card.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<div class=\"education-card\">\r\n  <h2>{{ title }}</h2>\r\n  <h3>{{ degree }}</h3>\r\n  <h6>{{ period }}</h6>\r\n  <p>{{ description }}</p>\r\n  <span *ngIf=\"resultsLink\">\r\n    Click <a [href]=\"resultsLink\" target=\"_blank\">Here</a> to see my results\r\n  </span>\r\n</div>\r\n"
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<div class=\"education-card\">\r\n  <div class=\"tab-buttons\">\r\n    <button \r\n      class=\"tab-btn\" \r\n      [class.active]=\"activeTab === 'college'\"\r\n      (click)=\"setActiveTab('college')\">\r\n      College\r\n    </button>\r\n    <button \r\n      class=\"tab-btn\" \r\n      [class.active]=\"activeTab === 'projects'\"\r\n      (click)=\"setActiveTab('projects')\">\r\n      Projects\r\n    </button>\r\n    <button \r\n      class=\"tab-btn\" \r\n      [class.active]=\"activeTab === 'learning'\"\r\n      (click)=\"setActiveTab('learning')\">\r\n      Independent Learning\r\n    </button>\r\n  </div>\r\n\r\n  <div class=\"tab-content\">\r\n    <div *ngIf=\"activeTab === 'college'\" class=\"tab-panel\">\r\n      <h3>GTI QQI Level 5</h3>\r\n      <h6>September 2018 to June 2019</h6>\r\n      <p>\r\n        Digital Media (Games Development) - Graduated with 4 distinctions. This comprehensive course provided \r\n        a strong foundation in object-oriented programming, game design, and software development principles. \r\n        I gained expertise in C#, Unity, design patterns, and collaborative development workflows.\r\n      </p>\r\n      <span>Click <a href=\"images/results.PNG\" target=\"_blank\">Here</a> to see my results</span>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'projects'\" class=\"tab-panel\">\r\n      <h3>Notable Projects</h3>\r\n      <ul class=\"project-list\">\r\n        <li>\r\n          <strong>Mod Strength Dashboard</strong> - Enterprise Angular app at Fidelity Investments\r\n        </li>\r\n        <li>\r\n          <strong>Portfolio Website</strong> - Angular 21 with Storybook and Spotify integration\r\n        </li>\r\n        <li>\r\n          <strong>Ecosystem Simulation</strong> - Unity game using state design patterns\r\n        </li>\r\n        <li>\r\n          <strong>Hop Mobile Game</strong> - Endless runner built with Unity and C#\r\n        </li>\r\n      </ul>\r\n    </div>\r\n\r\n    <div *ngIf=\"activeTab === 'learning'\" class=\"tab-panel\">\r\n      <h3>Continuous Learning</h3>\r\n      <ul class=\"learning-list\">\r\n        <li>\r\n          <strong>Angular & TypeScript</strong> - Advanced patterns and enterprise architecture\r\n        </li>\r\n        <li>\r\n          <strong>Node.js & Backend</strong> - RESTful APIs, microservices, and databases\r\n        </li>\r\n        <li>\r\n          <strong>DevOps & CI/CD</strong> - Docker, deployment pipelines, and automation\r\n        </li>\r\n        <li>\r\n          <strong>Game Development</strong> - Unity, C#, and game design principles\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "Footer",
@@ -1602,7 +1605,7 @@
         },
         {
             "name": "Skills",
-            "id": "component-Skills-7dcae84dcdab828e25331071d87e385ac86e67bb4f28510054f55495bae75f4034e654f8d41a085bf78d7dae45df3091f4601844bd2bfc8e4e043ca781197e03",
+            "id": "component-Skills-54c88c07c278eca1a243f217dfd2377ab4c905c261422131e1affbd95d525fc0e1cbab2fb2d91a64afeb04533485f2b7e3ba2d8fafc2f04b0135e5888008303c",
             "file": "src/app/components/skills/skills.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1622,7 +1625,7 @@
             "propertiesClass": [
                 {
                     "name": "careerHighlights",
-                    "defaultValue": "[\n    {\n      name: 'Software Engineer — Fidelity Investments',\n      description: 'Building enterprise Angular applications serving millions of users'\n    },\n    {\n      name: 'Intern Software Engineer — Fidelity Investments',\n      description: 'Created the Mod Strength Dashboard to help improve operational efficiency'\n    },\n    {\n      name: 'Intern Software Engineer — Croi',\n      description: 'Built applications to support the organisation\\'s digital operations'\n    },\n    {\n      name: 'GTI QQI Level 5 — 4 Distinctions',\n      description: 'Digital Media & Games Development, graduated 2019'\n    },\n    {\n      name: 'Open Source & Personal Projects',\n      description: 'Actively building and shipping side projects in web & game dev'\n    }\n  ]",
+                    "defaultValue": "[\n    {\n      name: '5+ Years',\n      description: 'Freelancing and building custom solutions'\n    },\n    {\n      name: '3+ Years',\n      description: 'Professional software development experience'\n    },\n    {\n      name: 'Enterprise Scale',\n      description: 'Building apps serving millions of users at Fidelity'\n    },\n    {\n      name: '4 Distinctions',\n      description: 'GTI QQI Level 5 Digital Media & Games Development'\n    },\n    {\n      name: 'Based in Galway',\n      description: 'Open to remote and hybrid opportunities'\n    }\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
@@ -1717,7 +1720,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, OnDestroy } from '@angular/core';\nimport { SpotifyService, SpotifyTrack } from '../../services/spotify.service';\nimport { NgFor } from '@angular/common';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { SpotifyWidget } from '../spotify-widget/spotify-widget';\nimport { EducationCard } from '../education-card/education-card';\nimport { SkillListItem } from '../skill-list-item/skill-list-item';\n\n@Component({\n  selector: 'app-skills',\n  imports: [NgFor, ScrollAnimateDirective, SpotifyWidget, EducationCard, SkillListItem],\n  templateUrl: './skills.html',\n  styleUrl: './skills.css',\n})\nexport class Skills implements OnInit, OnDestroy {\n  currentTrack: SpotifyTrack | null = null;\n  private intervalId: any;\n\n  careerHighlights = [\n    {\n      name: 'Software Engineer — Fidelity Investments',\n      description: 'Building enterprise Angular applications serving millions of users'\n    },\n    {\n      name: 'Intern Software Engineer — Fidelity Investments',\n      description: 'Created the Mod Strength Dashboard to help improve operational efficiency'\n    },\n    {\n      name: 'Intern Software Engineer — Croi',\n      description: 'Built applications to support the organisation\\'s digital operations'\n    },\n    {\n      name: 'GTI QQI Level 5 — 4 Distinctions',\n      description: 'Digital Media & Games Development, graduated 2019'\n    },\n    {\n      name: 'Open Source & Personal Projects',\n      description: 'Actively building and shipping side projects in web & game dev'\n    }\n  ];\n\n  constructor(private spotifyService: SpotifyService) {}\n\n  ngOnInit() {\n    this.updateNowPlaying();\n    // Update every 30 seconds\n    this.intervalId = setInterval(() => {\n      this.updateNowPlaying();\n    }, 30000);\n  }\n\n  ngOnDestroy() {\n    if (this.intervalId) {\n      clearInterval(this.intervalId);\n    }\n  }\n\n  async updateNowPlaying() {\n    this.currentTrack = await this.spotifyService.getCurrentlyPlaying();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit, OnDestroy } from '@angular/core';\nimport { SpotifyService, SpotifyTrack } from '../../services/spotify.service';\nimport { NgFor } from '@angular/common';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { SpotifyWidget } from '../spotify-widget/spotify-widget';\nimport { EducationCard } from '../education-card/education-card';\nimport { SkillListItem } from '../skill-list-item/skill-list-item';\n\n@Component({\n  selector: 'app-skills',\n  imports: [NgFor, ScrollAnimateDirective, SpotifyWidget, EducationCard, SkillListItem],\n  templateUrl: './skills.html',\n  styleUrl: './skills.css',\n})\nexport class Skills implements OnInit, OnDestroy {\n  currentTrack: SpotifyTrack | null = null;\n  private intervalId: any;\n\n  careerHighlights = [\n    {\n      name: '5+ Years',\n      description: 'Freelancing and building custom solutions'\n    },\n    {\n      name: '3+ Years',\n      description: 'Professional software development experience'\n    },\n    {\n      name: 'Enterprise Scale',\n      description: 'Building apps serving millions of users at Fidelity'\n    },\n    {\n      name: '4 Distinctions',\n      description: 'GTI QQI Level 5 Digital Media & Games Development'\n    },\n    {\n      name: 'Based in Galway',\n      description: 'Open to remote and hybrid opportunities'\n    }\n  ];\n\n  constructor(private spotifyService: SpotifyService) {}\n\n  ngOnInit() {\n    this.updateNowPlaying();\n    // Update every 30 seconds\n    this.intervalId = setInterval(() => {\n      this.updateNowPlaying();\n    }, 30000);\n  }\n\n  ngOnDestroy() {\n    if (this.intervalId) {\n      clearInterval(this.intervalId);\n    }\n  }\n\n  async updateNowPlaying() {\n    this.currentTrack = await this.spotifyService.getCurrentlyPlaying();\n  }\n}\n",
             "styleUrl": "./skills.css",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1757,7 +1760,7 @@
                 "OnInit",
                 "OnDestroy"
             ],
-            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"skills\" scrollAnimate id=\"skillsSection\">\n  <div class=\"skills-container\">\n    <app-spotify-widget [currentTrack]=\"currentTrack\"></app-spotify-widget>\n\n    <div class=\"skill-category\">\n      <h3>Career Highlights</h3>\n      <ul class=\"skill-list\">\n        <app-skill-list-item\n          *ngFor=\"let highlight of careerHighlights\"\n          [name]=\"highlight.name\"\n          [description]=\"highlight.description\">\n        </app-skill-list-item>\n      </ul>\n    </div>\n\n    <app-education-card\n      title=\"Education\"\n      degree=\"GTI QQI Level 5\"\n      period=\"September 2018 to June 2019\"\n      description=\"Digital Media (Games Development) - Graduated with 4 distinctions. This comprehensive course provided a strong foundation in object-oriented programming, game design, and software development principles. I gained expertise in C#, Unity, design patterns, and collaborative development workflows.\"\n      resultsLink=\"images/results.PNG\">\n    </app-education-card>\n  </div>\n</section>\n"
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"skills\" scrollAnimate id=\"skillsSection\">\n  <div class=\"skills-container\">\n    <app-spotify-widget [currentTrack]=\"currentTrack\"></app-spotify-widget>\n\n    <div class=\"skill-category\">\n      <h3>Quick Facts</h3>\n      <ul class=\"skill-list\">\n        <app-skill-list-item\n          *ngFor=\"let highlight of careerHighlights\"\n          [name]=\"highlight.name\"\n          [description]=\"highlight.description\">\n        </app-skill-list-item>\n      </ul>\n    </div>\n\n    <app-education-card></app-education-card>\n  </div>\n</section>\n"
         },
         {
             "name": "SpotifyWidget",
@@ -2097,7 +2100,7 @@
                 "linktype": "component",
                 "name": "EducationCard",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
