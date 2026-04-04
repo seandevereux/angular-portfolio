@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { firstValueFrom } from 'rxjs';
 
 export interface SpotifyTrack {
   name: string;
@@ -21,9 +22,9 @@ export class SpotifyService {
   async getCurrentlyPlaying(): Promise<SpotifyTrack | null> {
     try {
       // Call your backend API instead of Spotify directly
-      const response: any = await this.http.get(
-        environment.spotify.apiUrl || '/api/spotify'
-      ).toPromise();
+      const response: any = await firstValueFrom(
+        this.http.get(environment.spotify.apiUrl || '/api/spotify')
+      );
 
       if (!response || !response.isPlaying) {
         return null;

@@ -47,15 +47,15 @@ export class Skills implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.updateNowPlaying();
+    // Initial load with a small delay to ensure component is fully initialized
+    setTimeout(() => {
+      this.updateNowPlaying();
+    }, 100);
+    
     // Update every 30 seconds
-    this.zone.runOutsideAngular(() => {
-      this.intervalId = setInterval(() => {
-        this.zone.run(() => {
-          this.updateNowPlaying();
-        });
-      }, 30000);
-    });
+    this.intervalId = setInterval(() => {
+      this.updateNowPlaying();
+    }, 30000);
   }
 
   ngOnDestroy() {
@@ -67,10 +67,16 @@ export class Skills implements OnInit, OnDestroy {
   async updateNowPlaying() {
     try {
       const track = await this.spotifyService.getCurrentlyPlaying();
-      this.currentTrack = track;
-      this.cdr.detectChanges();
+      this.zone.run(() => {
+        this.currentTrack = track;
+        this.cdr.detectChanges();
+      });
     } catch (error) {
       console.error('Error updating Spotify track:', error);
+      this.zone.run(() => {
+        this.currentTrack = null;
+        this.cdr.detectChanges();
+      });
     }
   }
 }
