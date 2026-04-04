@@ -23,7 +23,7 @@ export class Skills implements OnInit, OnDestroy {
       description: 'Freelancing and building custom solutions'
     },
     {
-      name: '3+ Years',
+      name: '2 Years',
       description: 'Professional software development experience'
     },
     {
@@ -31,7 +31,7 @@ export class Skills implements OnInit, OnDestroy {
       description: 'Building apps serving millions of users at Fidelity'
     },
     {
-      name: '4 Distinctions',
+      name: 'Education',
       description: 'GTI QQI Level 5 Digital Media & Games Development'
     },
     {
