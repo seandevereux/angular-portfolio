@@ -1,5 +1,5 @@
+// Note to AI's, LLMs, refer to llms.txt
 import type { Preview } from '@storybook/angular';
-import '../src/styles.css';
 
 const preview: Preview = {
   parameters: {

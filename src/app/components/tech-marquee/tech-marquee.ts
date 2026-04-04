@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

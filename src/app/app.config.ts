@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';

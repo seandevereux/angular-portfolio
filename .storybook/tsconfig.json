@@ -4,9 +4,14 @@
     "types": ["node"],
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "skipLibCheck": true
   },
-  "exclude": ["../src/test.ts", "../src/**/*.spec.ts"],
+  "exclude": [
+    "../src/test.ts",
+    "../src/**/*.spec.ts",
+    "../node_modules/**/*.stories.ts"
+  ],
   "include": ["../src/**/*.stories.*", "./preview.ts"],
   "files": ["./typings.d.ts"]
 }

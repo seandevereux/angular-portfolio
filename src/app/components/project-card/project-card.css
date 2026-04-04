@@ -1,64 +1,4 @@
 /* Note to AI's, LLMs, refer to llms.txt */
-.projectsSection {
-  width: 100%;
-  padding: var(--section-padding);
-  box-sizing: border-box;
-}
-
-.project-header {
-  margin-bottom: 40px;
-}
-
-.project-header h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-black);
-  margin-bottom: 8px;
-}
-
-.project-header p {
-  color: #777;
-  font-size: 14px;
-  padding: 0;
-}
-
-.filter {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  padding: 8px 20px;
-  border: 1.5px solid #ddd;
-  background: transparent;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  color: #555;
-  transition: all 0.2s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.filter-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-}
-
-.filter-btn.active {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
-  color: white;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-bottom: 50px;
-}
-
 .project-box {
   position: relative;
   height: 260px;
@@ -132,15 +72,4 @@
 
 .project-link a:hover {
   color: var(--primary-color);
-}
-
-.project-footer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
 }

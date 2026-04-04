@@ -2,14 +2,139 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "User",
-            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
-            "file": "src/stories/user.ts",
+            "name": "Project",
+            "id": "interface-Project-6824f0bff8831315ce0206fb6ebb2f0b3861619dd8e9812ed0a2bfc9eb78150bfdd77333e599498b1795b7922c67552468b245336a3e23b8e1b91f9fe2c4593b",
+            "file": "src/app/components/carousel/carousel.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { NgFor, NgClass } from '@angular/common';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { ProjectCard } from '../project-card/project-card';\n\ninterface Project {\n  title: string;\n  description: string;\n  stack: string;\n  category: 'web' | 'game' | 'software';\n  image: string;\n  link?: string;\n  github?: string;\n}\n\n@Component({\n  selector: 'app-carousel',\n  imports: [NgFor, NgClass, ScrollAnimateDirective, ProjectCard],\n  templateUrl: './carousel.html',\n  styleUrl: './carousel.css',\n})\nexport class Carousel {\n  activeFilter = '*';\n\n  filters = [\n    { label: 'All', value: '*' },\n    { label: 'Web', value: 'web' },\n    { label: 'Game', value: 'game' },\n    { label: 'Software', value: 'software' },\n  ];\n\n  projects: Project[] = [\n    {\n      title: 'Mod Strength Dashboard',\n      description: 'Built during my internship at Fidelity Investments to improve operational efficiency for moderation teams.',\n      stack: 'Angular TypeScript',\n      category: 'software',\n      image: 'images/software1.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Croi Applications',\n      description: 'Developed web applications for Croi during my internship to support the organisation\\'s digital operations.',\n      stack: 'Angular TypeScript Node.js',\n      category: 'web',\n      image: 'images/web.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Hop — Mobile Endless Runner',\n      description: 'An endless runner mobile game inspired by Subway Surfers, built in Unity with C#.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/hopgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Eco — Ecosystem Simulation',\n      description: 'A functioning ecosystem simulation with wolves and rabbits as predator and prey. Built using the state design pattern and finite state machines.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/ecosimgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Jump — Game Jam Entry',\n      description: 'My first game jam entry. A great learning experience building a complete game under time pressure.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/jumpgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Portfolio Website',\n      description: 'This portfolio, migrated from Next.js to Angular 21 with Storybook, Spotify integration and scroll animations.',\n      stack: 'Angular TypeScript Storybook',\n      category: 'web',\n      image: 'images/background.jpg',\n      github: 'https://github.com/seandevereux'\n    }\n  ];\n\n  get filteredProjects(): Project[] {\n    if (this.activeFilter === '*') return this.projects;\n    return this.projects.filter(p => p.category === this.activeFilter);\n  }\n\n  setFilter(value: string) {\n    this.activeFilter = value;\n  }\n}\n",
             "properties": [
+                {
+                    "name": "category",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"web\" | \"game\" | \"software\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "description",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "github",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "image",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "link",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "stack",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "SpotifyTrack",
+            "id": "interface-SpotifyTrack-4c8b8c753ca9bc2448ffb8adddd8597a257478d19a6c34729ddf4cf0751c7f2e69a4760bae7e7e5da292e4f6e8ff5144d155405cd2e6c56ac4e1c8b3779a4e72",
+            "file": "src/app/services/spotify.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { environment } from '../../environments/environment';\r\n\r\nexport interface SpotifyTrack {\r\n  name: string;\r\n  artist: string;\r\n  album: string;\r\n  albumArt: string;\r\n  isPlaying: boolean;\r\n  url: string;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class SpotifyService {\r\n  constructor(private http: HttpClient) {}\r\n\r\n  async getCurrentlyPlaying(): Promise<SpotifyTrack | null> {\r\n    try {\r\n      // Call your backend API instead of Spotify directly\r\n      const response: any = await this.http.get(\r\n        environment.spotify.apiUrl || '/api/spotify'\r\n      ).toPromise();\r\n\r\n      if (!response || !response.isPlaying) {\r\n        return null;\r\n      }\r\n\r\n      return {\r\n        name: response.name,\r\n        artist: response.artist,\r\n        album: response.album,\r\n        albumArt: response.albumArt,\r\n        isPlaying: response.isPlaying,\r\n        url: response.url\r\n      };\r\n    } catch (error) {\r\n      console.error('Error fetching currently playing:', error);\r\n      return null;\r\n    }\r\n  }\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "album",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "albumArt",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "artist",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "isPlaying",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
                 {
                     "name": "name",
                     "deprecated": false,
@@ -18,7 +143,17 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 2
+                    "line": 7
+                },
+                {
+                    "name": "url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
                 }
             ],
             "indexSignatures": [],
@@ -27,15 +162,510 @@
             "extends": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "SmoothScrollService",
+            "id": "injectable-SmoothScrollService-a0df54d20c1f56281bc8915222b5fcd8c05238007a75abc21fcd67e746e092d10499d6f6683d849ae6d06635703ca17018c6f0223451c56f63ec1cf0054f28c9",
+            "file": "src/app/services/smooth-scroll.service.ts",
+            "properties": [
+                {
+                    "name": "animationId",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "easeInOutCubic",
+                    "args": [
+                        {
+                            "name": "t",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "t",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "scrollTo",
+                    "args": [
+                        {
+                            "name": "targetY",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "duration",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "700"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "targetY",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "duration",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "700",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "scrollToElement",
+                    "args": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "offset",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "80"
+                        },
+                        {
+                            "name": "duration",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "700"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "offset",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "80",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "duration",
+                            "type": "number",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "700",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable, NgZone } from '@angular/core';\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class SmoothScrollService {\r\n  private animationId: number | null = null;\r\n\r\n  constructor(private zone: NgZone) {}\r\n\r\n  // Ease in-out cubic — feels natural, never glitches\r\n  private easeInOutCubic(t: number): number {\r\n    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;\r\n  }\r\n\r\n  scrollTo(targetY: number, duration = 700): void {\r\n    if (this.animationId !== null) {\r\n      cancelAnimationFrame(this.animationId);\r\n      this.animationId = null;\r\n    }\r\n\r\n    const startY = window.scrollY || document.documentElement.scrollTop;\r\n    const distance = targetY - startY;\r\n    const startTime = performance.now();\r\n\r\n    this.zone.runOutsideAngular(() => {\r\n      const step = (currentTime: number) => {\r\n        const elapsed = currentTime - startTime;\r\n        const progress = Math.min(elapsed / duration, 1);\r\n        const eased = this.easeInOutCubic(progress);\r\n        const newY = startY + distance * eased;\r\n\r\n        // Set both — covers all browsers and scroll containers\r\n        window.scrollTo(0, newY);\r\n        document.documentElement.scrollTop = newY;\r\n\r\n        if (progress < 1) {\r\n          this.animationId = requestAnimationFrame(step);\r\n        } else {\r\n          this.animationId = null;\r\n        }\r\n      };\r\n\r\n      this.animationId = requestAnimationFrame(step);\r\n    });\r\n  }\r\n\r\n  scrollToElement(sectionId: string, offset = 80, duration = 700): void {\r\n    const element = document.getElementById(sectionId);\r\n    if (!element) return;\r\n    const targetY = element.getBoundingClientRect().top + window.scrollY - offset;\r\n    this.scrollTo(targetY, duration);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "zone",
+                        "type": "NgZone",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 6,
+                "jsdoctags": [
+                    {
+                        "name": "zone",
+                        "type": "NgZone",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        },
+        {
+            "name": "SpotifyService",
+            "id": "injectable-SpotifyService-4c8b8c753ca9bc2448ffb8adddd8597a257478d19a6c34729ddf4cf0751c7f2e69a4760bae7e7e5da292e4f6e8ff5144d155405cd2e6c56ac4e1c8b3779a4e72",
+            "file": "src/app/services/spotify.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getCurrentlyPlaying",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<SpotifyTrack | null>",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { environment } from '../../environments/environment';\r\n\r\nexport interface SpotifyTrack {\r\n  name: string;\r\n  artist: string;\r\n  album: string;\r\n  albumArt: string;\r\n  isPlaying: boolean;\r\n  url: string;\r\n}\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class SpotifyService {\r\n  constructor(private http: HttpClient) {}\r\n\r\n  async getCurrentlyPlaying(): Promise<SpotifyTrack | null> {\r\n    try {\r\n      // Call your backend API instead of Spotify directly\r\n      const response: any = await this.http.get(\r\n        environment.spotify.apiUrl || '/api/spotify'\r\n      ).toPromise();\r\n\r\n      if (!response || !response.isPlaying) {\r\n        return null;\r\n      }\r\n\r\n      return {\r\n        name: response.name,\r\n        artist: response.artist,\r\n        album: response.album,\r\n        albumArt: response.albumArt,\r\n        isPlaying: response.isPlaying,\r\n        url: response.url\r\n      };\r\n    } catch (error) {\r\n      console.error('Error fetching currently playing:', error);\r\n      return null;\r\n    }\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
-    "directives": [],
+    "directives": [
+        {
+            "name": "ScrollAnimateDirective",
+            "id": "directive-ScrollAnimateDirective-64fbe9599ded7166ef59303e086cdad6adad1b21b49fc4863aa46543021bbe16e6490c1a1ecaed3fff9a18982af0ab6ae09ffbb151a22888d78944cc469717f8",
+            "file": "src/app/directives/scroll-animate.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[scrollAnimate]',\r\n  standalone: true\r\n})\r\nexport class ScrollAnimateDirective implements OnInit, OnDestroy {\r\n  private observer!: IntersectionObserver;\r\n\r\n  constructor(private el: ElementRef) {}\r\n\r\n  ngOnInit() {\r\n    // Wait for page to fully load before hiding elements\r\n    // This prevents the blank page on refresh issue\r\n    if (document.readyState === 'complete') {\r\n      this.init();\r\n    } else {\r\n      window.addEventListener('load', () => this.init(), { once: true });\r\n    }\r\n  }\r\n\r\n  private init() {\r\n    this.el.nativeElement.classList.add('scroll-hidden');\r\n\r\n    // Small delay ensures layout is complete before observing\r\n    setTimeout(() => {\r\n      this.observer = new IntersectionObserver(\r\n        ([entry]) => {\r\n          if (entry.isIntersecting) {\r\n            this.el.nativeElement.classList.add('scroll-visible');\r\n            this.observer.unobserve(this.el.nativeElement);\r\n          }\r\n        },\r\n        { threshold: 0, rootMargin: '0px 0px -50px 0px' }\r\n      );\r\n\r\n      this.observer.observe(this.el.nativeElement);\r\n    }, 100);\r\n  }\r\n\r\n  ngOnDestroy() {\r\n    if (this.observer) this.observer.disconnect();\r\n  }\r\n}\r\n",
+            "selector": "[scrollAnimate]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "observer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IntersectionObserver",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "init",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "el",
+                        "type": "ElementRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "components": [
         {
+            "name": "About",
+            "id": "component-About-fa5e11ae2719ae1fa2d4f7251c1335a216c99d6180408cd837aa8096c0df0b540db6950f12c47c5b0d2bc455a03545d804a9e2e401739714f5dc3c176435f350",
+            "file": "src/app/components/about/about.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-about",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./about.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "scrollToSection",
+                    "args": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "ScrollAnimateDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "TechMarquee"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { TechMarquee } from '../tech-marquee/tech-marquee';\nimport { SmoothScrollService } from '../../services/smooth-scroll.service';\n\n@Component({\n  selector: 'app-about',\n  imports: [ScrollAnimateDirective, TechMarquee],\n  templateUrl: './about.html',\n  styleUrl: './about.css',\n})\nexport class About {\n  constructor(private scroll: SmoothScrollService) {}\n\n  scrollToSection(sectionId: string) {\n    this.scroll.scrollToElement(sectionId);\n  }\n}\n",
+            "styleUrl": "./about.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"about\" scrollAnimate id=\"aboutSection\">\n  <div class=\"about-container\">\n    <div class=\"photo-wrapper\">\n      <img class=\"photo\" src=\"images/headshot.png\" alt=\"Sean Devereux\"/>\n    </div>\n    <div class=\"background\">\n      <h2 class=\"title\">Background</h2>\n      <h4 class=\"subtitle\">A bit About Me</h4>\n      <p>\n        I'm a full-stack developer based in Galway with a passion for building clean,\n        performant web applications. My journey started at GTI where I graduated with\n        4 distinctions in Digital Media & Games Development.\n      </p>\n      <p>\n        I take into consideration performance, accessibility and user experience while\n        writing reusable and efficient code. I enjoy working across the full stack —\n        from crafting polished UIs to designing scalable backend systems.\n      </p>\n      <p>\n        Currently working at <strong>Fidelity Investments</strong>, where I contribute\n        to enterprise-grade financial technology solutions serving millions of users.\n        My role involves building scalable Angular applications, collaborating with\n        cross-functional teams, and upholding strict security and compliance standards.\n      </p>\n      <p>\n        Outside of work I enjoy reading, writing, playing video games and watching UFC & boxing.\n      </p>\n    </div>\n  </div>\n\n  <div class=\"technologies\">\n    <h4>My core tools and technologies</h4>\n    <app-tech-marquee></app-tech-marquee>\n  </div>\n</section>\n"
+        },
+        {
             "name": "App",
-            "id": "component-App-d67e8cd82cfa1a4afa38e80250af00eb37270873ca19759569af8ce2eba62489a72dcfdc55119198b356295db051be56ef0c987f7924a292b06d754ab642fe07",
+            "id": "component-App-bb95e8cdd3ce36fc67e1b433797855047036027ed9975bac6ca765d77069ddea239079cc28560bda1a0536f40997a566f100f72cb385257a3e63bd42971ccbcf",
             "file": "src/app/app.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -55,14 +685,14 @@
             "propertiesClass": [
                 {
                     "name": "title",
-                    "defaultValue": "signal('app')",
+                    "defaultValue": "signal('Sean Devereux - Portfolio')",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "unknown",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 11,
+                    "line": 17,
                     "modifierKind": [
                         124,
                         148
@@ -77,301 +707,543 @@
             "standalone": false,
             "imports": [
                 {
-                    "name": "RouterOutlet"
+                    "name": "Header"
+                },
+                {
+                    "name": "About"
+                },
+                {
+                    "name": "Skills"
+                },
+                {
+                    "name": "Carousel"
+                },
+                {
+                    "name": "Footer"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet],\n  templateUrl: './app.html',\n  styleUrl: './app.css',\n})\nexport class App {\n  protected readonly title = signal('app');\n}\n",
+            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { provideHttpClient } from '@angular/common/http';\nimport { Header } from './components/header/header';\nimport { About } from './components/about/about';\nimport { Skills } from './components/skills/skills';\nimport { Carousel } from './components/carousel/carousel';\nimport { Footer } from './components/footer/footer';\n\n@Component({\n  selector: 'app-root',\n  imports: [Header, About, Skills, Carousel, Footer],\n  templateUrl: './app.html',\n  styleUrl: './app.css',\n})\nexport class App {\n  protected readonly title = signal('Sean Devereux - Portfolio');\n}\n",
             "styleUrl": "./app.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->\n<!-- * * * * * * * to get started with your project! * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<style>\n  :host {\n    --bright-blue: oklch(51.01% 0.274 263.83);\n    --electric-violet: oklch(53.18% 0.28 296.97);\n    --french-violet: oklch(47.66% 0.246 305.88);\n    --vivid-pink: oklch(69.02% 0.277 332.77);\n    --hot-red: oklch(61.42% 0.238 15.34);\n    --orange-red: oklch(63.32% 0.24 31.68);\n\n    --gray-900: oklch(19.37% 0.006 300.98);\n    --gray-700: oklch(36.98% 0.014 302.71);\n    --gray-400: oklch(70.9% 0.015 304.04);\n\n    --red-to-pink-to-purple-vertical-gradient: linear-gradient(\n      180deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(\n      90deg,\n      var(--orange-red) 0%,\n      var(--vivid-pink) 50%,\n      var(--electric-violet) 100%\n    );\n\n    --pill-accent: var(--bright-blue);\n\n    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,\n      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n    box-sizing: border-box;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n    display: block;\n    height: 100dvh;\n  }\n\n  h1 {\n    font-size: 3.125rem;\n    color: var(--gray-900);\n    font-weight: 500;\n    line-height: 100%;\n    letter-spacing: -0.125rem;\n    margin: 0;\n    font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,\n      Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n  }\n\n  p {\n    margin: 0;\n    color: var(--gray-700);\n  }\n\n  main {\n    width: 100%;\n    min-height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 1rem;\n    box-sizing: inherit;\n    position: relative;\n  }\n\n  .angular-logo {\n    max-width: 9.2rem;\n  }\n\n  .content {\n    display: flex;\n    justify-content: space-around;\n    width: 100%;\n    max-width: 700px;\n    margin-bottom: 3rem;\n  }\n\n  .content h1 {\n    margin-top: 1.75rem;\n  }\n\n  .content p {\n    margin-top: 1.5rem;\n  }\n\n  .divider {\n    width: 1px;\n    background: var(--red-to-pink-to-purple-vertical-gradient);\n    margin-inline: 0.5rem;\n  }\n\n  .pill-group {\n    display: flex;\n    flex-direction: column;\n    align-items: start;\n    flex-wrap: wrap;\n    gap: 1.25rem;\n  }\n\n  .pill {\n    display: flex;\n    align-items: center;\n    --pill-accent: var(--bright-blue);\n    background: color-mix(in srgb, var(--pill-accent) 5%, transparent);\n    color: var(--pill-accent);\n    padding-inline: 0.75rem;\n    padding-block: 0.375rem;\n    border-radius: 2.75rem;\n    border: 0;\n    transition: background 0.3s ease;\n    font-family: var(--inter-font);\n    font-size: 0.875rem;\n    font-style: normal;\n    font-weight: 500;\n    line-height: 1.4rem;\n    letter-spacing: -0.00875rem;\n    text-decoration: none;\n    white-space: nowrap;\n  }\n\n  .pill:hover {\n    background: color-mix(in srgb, var(--pill-accent) 15%, transparent);\n  }\n\n  .pill-group .pill:nth-child(6n + 1) {\n    --pill-accent: var(--bright-blue);\n  }\n  .pill-group .pill:nth-child(6n + 2) {\n    --pill-accent: var(--electric-violet);\n  }\n  .pill-group .pill:nth-child(6n + 3) {\n    --pill-accent: var(--french-violet);\n  }\n\n  .pill-group .pill:nth-child(6n + 4),\n  .pill-group .pill:nth-child(6n + 5),\n  .pill-group .pill:nth-child(6n + 6) {\n    --pill-accent: var(--hot-red);\n  }\n\n  .pill-group svg {\n    margin-inline-start: 0.25rem;\n  }\n\n  .social-links {\n    display: flex;\n    align-items: center;\n    gap: 0.73rem;\n    margin-top: 1.5rem;\n  }\n\n  .social-links path {\n    transition: fill 0.3s ease;\n    fill: var(--gray-400);\n  }\n\n  .social-links a:hover svg path {\n    fill: var(--gray-900);\n  }\n\n  @media screen and (max-width: 650px) {\n    .content {\n      flex-direction: column;\n      width: max-content;\n    }\n\n    .divider {\n      height: 1px;\n      width: 100%;\n      background: var(--red-to-pink-to-purple-horizontal-gradient);\n      margin-block: 1.5rem;\n    }\n  }\n</style>\n\n<main class=\"main\">\n  <div class=\"content\">\n    <div class=\"left-side\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        viewBox=\"0 0 982 239\"\n        fill=\"none\"\n        class=\"angular-logo\"\n      >\n        <g clip-path=\"url(#a)\">\n          <path\n            fill=\"url(#b)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n          <path\n            fill=\"url(#c)\"\n            d=\"M388.676 191.625h30.849L363.31 31.828h-35.758l-56.215 159.797h30.848l13.174-39.356h60.061l13.256 39.356Zm-65.461-62.675 21.602-64.311h1.227l21.602 64.311h-44.431Zm126.831-7.527v70.202h-28.23V71.839h27.002v20.374h1.392c2.782-6.71 7.2-12.028 13.255-15.956 6.056-3.927 13.584-5.89 22.503-5.89 8.264 0 15.465 1.8 21.684 5.318 6.137 3.518 10.964 8.673 14.319 15.382 3.437 6.71 5.074 14.81 4.992 24.383v76.175h-28.23v-71.92c0-8.019-2.046-14.237-6.219-18.819-4.173-4.5-9.819-6.791-17.102-6.791-4.91 0-9.328 1.063-13.174 3.272-3.846 2.128-6.792 5.237-9.001 9.328-2.046 4.009-3.191 8.918-3.191 14.728ZM589.233 239c-10.147 0-18.82-1.391-26.103-4.091-7.282-2.7-13.092-6.382-17.511-10.964-4.418-4.582-7.528-9.655-9.164-15.219l25.448-6.136c1.145 2.372 2.782 4.663 4.991 6.954 2.209 2.291 5.155 4.255 8.837 5.81 3.683 1.554 8.428 2.291 14.074 2.291 8.019 0 14.647-1.964 19.884-5.81 5.237-3.845 7.856-10.227 7.856-19.064v-22.665h-1.391c-1.473 2.946-3.601 5.892-6.383 9.001-2.782 3.109-6.464 5.645-10.965 7.691-4.582 2.046-10.228 3.109-17.101 3.109-9.165 0-17.511-2.209-25.039-6.545-7.446-4.337-13.42-10.883-17.757-19.474-4.418-8.673-6.628-19.473-6.628-32.565 0-13.091 2.21-24.301 6.628-33.383 4.419-9.082 10.311-15.955 17.839-20.7 7.528-4.746 15.874-7.037 25.039-7.037 7.037 0 12.846 1.145 17.347 3.518 4.582 2.373 8.182 5.236 10.883 8.51 2.7 3.272 4.746 6.382 6.137 9.327h1.554v-19.8h27.821v121.749c0 10.228-2.454 18.737-7.364 25.447-4.91 6.709-11.538 11.7-20.048 15.055-8.509 3.355-18.165 4.991-28.884 4.991Zm.245-71.266c5.974 0 11.047-1.473 15.302-4.337 4.173-2.945 7.446-7.118 9.573-12.519 2.21-5.482 3.274-12.027 3.274-19.637 0-7.609-1.064-14.155-3.274-19.8-2.127-5.646-5.318-10.064-9.491-13.255-4.174-3.11-9.329-4.746-15.384-4.746s-11.537 1.636-15.792 4.91c-4.173 3.272-7.365 7.772-9.492 13.418-2.128 5.727-3.191 12.191-3.191 19.392 0 7.2 1.063 13.745 3.273 19.228 2.127 5.482 5.318 9.736 9.573 12.764 4.174 3.027 9.41 4.582 15.629 4.582Zm141.56-26.51V71.839h28.23v119.786h-27.412v-21.273h-1.227c-2.7 6.709-7.119 12.191-13.338 16.446-6.137 4.255-13.747 6.382-22.748 6.382-7.855 0-14.81-1.718-20.783-5.237-5.974-3.518-10.72-8.591-14.075-15.382-3.355-6.709-5.073-14.891-5.073-24.464V71.839h28.312v71.921c0 7.609 2.046 13.664 6.219 18.083 4.173 4.5 9.655 6.709 16.365 6.709 4.173 0 8.183-.982 12.111-3.028 3.927-2.045 7.118-5.072 9.655-9.082 2.537-4.091 3.764-9.164 3.764-15.218Zm65.707-109.395v159.796h-28.23V31.828h28.23Zm44.841 162.169c-7.61 0-14.402-1.391-20.457-4.091-6.055-2.7-10.883-6.791-14.32-12.109-3.518-5.319-5.237-11.946-5.237-19.801 0-6.791 1.228-12.355 3.765-16.773 2.536-4.419 5.891-7.937 10.228-10.637 4.337-2.618 9.164-4.664 14.647-6.055 5.4-1.391 11.046-2.373 16.856-3.027 7.037-.737 12.683-1.391 17.102-1.964 4.337-.573 7.528-1.555 9.574-2.782 1.963-1.309 3.027-3.273 3.027-5.973v-.491c0-5.891-1.718-10.391-5.237-13.664-3.518-3.191-8.51-4.828-15.056-4.828-6.955 0-12.356 1.473-16.447 4.5-4.009 3.028-6.71 6.546-8.183 10.719l-26.348-3.764c2.046-7.282 5.483-13.336 10.31-18.328 4.746-4.909 10.638-8.59 17.511-11.045 6.955-2.455 14.565-3.682 22.912-3.682 5.809 0 11.537.654 17.265 2.045s10.965 3.6 15.711 6.71c4.746 3.109 8.51 7.282 11.455 12.6 2.864 5.318 4.337 11.946 4.337 19.883v80.184h-27.166v-16.446h-.9c-1.719 3.355-4.092 6.464-7.201 9.328-3.109 2.864-6.955 5.237-11.619 6.955-4.828 1.718-10.229 2.536-16.529 2.536Zm7.364-20.701c5.646 0 10.556-1.145 14.729-3.354 4.173-2.291 7.364-5.237 9.655-9.001 2.292-3.763 3.355-7.854 3.355-12.273v-14.155c-.9.737-2.373 1.391-4.5 2.046-2.128.654-4.419 1.145-7.037 1.636-2.619.491-5.155.9-7.692 1.227-2.537.328-4.746.655-6.628.901-4.173.572-8.019 1.472-11.292 2.781-3.355 1.31-5.973 3.11-7.855 5.401-1.964 2.291-2.864 5.318-2.864 8.918 0 5.237 1.882 9.164 5.728 11.782 3.682 2.782 8.51 4.091 14.401 4.091Zm64.643 18.328V71.839h27.412v19.965h1.227c2.21-6.955 5.974-12.274 11.292-16.038 5.319-3.763 11.456-5.645 18.329-5.645 1.555 0 3.355.082 5.237.163 1.964.164 3.601.328 4.91.573v25.938c-1.227-.41-3.109-.819-5.646-1.146a58.814 58.814 0 0 0-7.446-.49c-5.155 0-9.738 1.145-13.829 3.354-4.091 2.209-7.282 5.236-9.655 9.164-2.373 3.927-3.519 8.427-3.519 13.5v70.448h-28.312ZM222.077 39.192l-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z\"\n          />\n        </g>\n        <defs>\n          <radialGradient\n            id=\"c\"\n            cx=\"0\"\n            cy=\"0\"\n            r=\"1\"\n            gradientTransform=\"rotate(118.122 171.182 60.81) scale(205.794)\"\n            gradientUnits=\"userSpaceOnUse\"\n          >\n            <stop stop-color=\"#FF41F8\" />\n            <stop offset=\".707\" stop-color=\"#FF41F8\" stop-opacity=\".5\" />\n            <stop offset=\"1\" stop-color=\"#FF41F8\" stop-opacity=\"0\" />\n          </radialGradient>\n          <linearGradient id=\"b\" x1=\"0\" x2=\"982\" y1=\"192\" y2=\"192\" gradientUnits=\"userSpaceOnUse\">\n            <stop stop-color=\"#F0060B\" />\n            <stop offset=\"0\" stop-color=\"#F0070C\" />\n            <stop offset=\".526\" stop-color=\"#CC26D5\" />\n            <stop offset=\"1\" stop-color=\"#7702FF\" />\n          </linearGradient>\n          <clipPath id=\"a\"><path fill=\"#fff\" d=\"M0 0h982v239H0z\" /></clipPath>\n        </defs>\n      </svg>\n      <h1>Hello, {{ title() }}</h1>\n      <p>Congratulations! Your app is running. 🎉</p>\n    </div>\n    <div class=\"divider\" role=\"separator\" aria-label=\"Divider\"></div>\n    <div class=\"right-side\">\n      <div class=\"pill-group\">\n        @for (item of [ { title: 'Explore the Docs', link: 'https://angular.dev' }, { title: 'Learn\n        with Tutorials', link: 'https://angular.dev/tutorials' }, { title: 'Prompt and best\n        practices for AI', link: 'https://angular.dev/ai/develop-with-ai'}, { title: 'CLI Docs',\n        link: 'https://angular.dev/tools/cli' }, { title: 'Angular Language Service', link:\n        'https://angular.dev/tools/language-service' }, { title: 'Angular DevTools', link:\n        'https://angular.dev/tools/devtools' }, ]; track item.title) {\n        <a class=\"pill\" [href]=\"item.link\" target=\"_blank\" rel=\"noopener\">\n          <span>{{ item.title }}</span>\n          <svg\n            xmlns=\"http://www.w3.org/2000/svg\"\n            height=\"14\"\n            viewBox=\"0 -960 960 960\"\n            width=\"14\"\n            fill=\"currentColor\"\n          >\n            <path\n              d=\"M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z\"\n            />\n          </svg>\n        </a>\n        }\n      </div>\n      <div class=\"social-links\">\n        <a\n          href=\"https://github.com/angular/angular\"\n          aria-label=\"Github\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"25\"\n            height=\"24\"\n            viewBox=\"0 0 25 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Github\"\n          >\n            <path\n              d=\"M12.3047 0C5.50634 0 0 5.50942 0 12.3047C0 17.7423 3.52529 22.3535 8.41332 23.9787C9.02856 24.0946 9.25414 23.7142 9.25414 23.3871C9.25414 23.0949 9.24389 22.3207 9.23876 21.2953C5.81601 22.0377 5.09414 19.6444 5.09414 19.6444C4.53427 18.2243 3.72524 17.8449 3.72524 17.8449C2.61064 17.082 3.81137 17.0973 3.81137 17.0973C5.04697 17.1835 5.69604 18.3647 5.69604 18.3647C6.79321 20.2463 8.57636 19.7029 9.27978 19.3881C9.39052 18.5924 9.70736 18.0499 10.0591 17.7423C7.32641 17.4347 4.45429 16.3765 4.45429 11.6618C4.45429 10.3185 4.9311 9.22133 5.72065 8.36C5.58222 8.04931 5.16694 6.79833 5.82831 5.10337C5.82831 5.10337 6.85883 4.77319 9.2121 6.36459C10.1965 6.09082 11.2424 5.95546 12.2883 5.94931C13.3342 5.95546 14.3801 6.09082 15.3644 6.36459C17.7023 4.77319 18.7328 5.10337 18.7328 5.10337C19.3942 6.79833 18.9789 8.04931 18.8559 8.36C19.6403 9.22133 20.1171 10.3185 20.1171 11.6618C20.1171 16.3888 17.2409 17.4296 14.5031 17.7321C14.9338 18.1012 15.3337 18.8559 15.3337 20.0084C15.3337 21.6552 15.3183 22.978 15.3183 23.3779C15.3183 23.7009 15.5336 24.0854 16.1642 23.9623C21.0871 22.3484 24.6094 17.7341 24.6094 12.3047C24.6094 5.50942 19.0999 0 12.3047 0Z\"\n            />\n          </svg>\n        </a>\n        <a href=\"https://x.com/angular\" aria-label=\"X\" target=\"_blank\" rel=\"noopener\">\n          <svg\n            width=\"24\"\n            height=\"24\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"X\"\n          >\n            <path\n              d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"\n            />\n          </svg>\n        </a>\n        <a\n          href=\"https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw\"\n          aria-label=\"Youtube\"\n          target=\"_blank\"\n          rel=\"noopener\"\n        >\n          <svg\n            width=\"29\"\n            height=\"20\"\n            viewBox=\"0 0 29 20\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            alt=\"Youtube\"\n          >\n            <path\n              fill-rule=\"evenodd\"\n              clip-rule=\"evenodd\"\n              d=\"M27.4896 1.52422C27.9301 1.96749 28.2463 2.51866 28.4068 3.12258C29.0004 5.35161 29.0004 10 29.0004 10C29.0004 10 29.0004 14.6484 28.4068 16.8774C28.2463 17.4813 27.9301 18.0325 27.4896 18.4758C27.0492 18.9191 26.5 19.2389 25.8972 19.4032C23.6778 20 14.8068 20 14.8068 20C14.8068 20 5.93586 20 3.71651 19.4032C3.11363 19.2389 2.56449 18.9191 2.12405 18.4758C1.68361 18.0325 1.36732 17.4813 1.20683 16.8774C0.613281 14.6484 0.613281 10 0.613281 10C0.613281 10 0.613281 5.35161 1.20683 3.12258C1.36732 2.51866 1.68361 1.96749 2.12405 1.52422C2.56449 1.08095 3.11363 0.76113 3.71651 0.596774C5.93586 0 14.8068 0 14.8068 0C14.8068 0 23.6778 0 25.8972 0.596774C26.5 0.76113 27.0492 1.08095 27.4896 1.52422ZM19.3229 10L11.9036 5.77905V14.221L19.3229 10Z\"\n            />\n          </svg>\n        </a>\n      </div>\n    </div>\n  </div>\n</main>\n\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->\n<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->\n<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->\n\n<router-outlet />\n"
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<app-header></app-header>\n\n<app-about></app-about>\n\n<app-skills></app-skills>\n\n<app-carousel></app-carousel>\n\n<app-footer></app-footer>\n"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-86e2311c54fbca7431c12e070d0fd5b0ebe343eec0553a392f182ba0e04a8f86613233d26ee47718fd0e7a65078f580c76a1fcc928ce55de81193d6618025bc4",
-            "file": "src/stories/button.component.ts",
+            "name": "Carousel",
+            "id": "component-Carousel-6824f0bff8831315ce0206fb6ebb2f0b3861619dd8e9812ed0a2bfc9eb78150bfdd77333e599498b1795b7922c67552468b245336a3e23b8e1b91f9fe2c4593b",
+            "file": "src/app/components/carousel/carousel.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
+            "selector": "app-carousel",
+            "styleUrls": [],
             "styles": [],
-            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "backgroundColor",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nWhat background color to use\n",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 29,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "label",
-                    "defaultValue": "'Button'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 798,
-                            "end": 811,
-                            "kind": 328,
-                            "id": 0,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "tagName": {
-                                "pos": 799,
-                                "end": 807,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 43,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 23,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nHow large should the button be?\n",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 35,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
-                }
+            "templateUrl": [
+                "./carousel.html"
             ],
-            "outputsClass": [
-                {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\n\nOptional click handler\n",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 49,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #555ab9;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 51
-                    }
-                }
-            }
-        },
-        {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
-            "file": "src/stories/header.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
-            "styles": [],
-            "template": "<header>    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 69,
-                    "type": "User | null",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [
-                {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 78,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 75,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "ButtonComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
-        },
-        {
-            "name": "PageComponent",
-            "id": "component-PageComponent-d32b0f19628254ea3fc5526c4d4564ada1cc83cf936759006d90a46f5874b02a3359e331bddda20b22e74a616a6443c660602ba74dd38ebe1160759e0de6f7ba",
-            "file": "src/stories/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
-            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "user",
-                    "defaultValue": "null",
+                    "name": "activeFilter",
+                    "defaultValue": "'*'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "User | null",
+                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69
+                    "line": 24
+                },
+                {
+                    "name": "filters",
+                    "defaultValue": "[\n    { label: 'All', value: '*' },\n    { label: 'Web', value: 'web' },\n    { label: 'Game', value: 'game' },\n    { label: 'Software', value: 'software' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "projects",
+                    "defaultValue": "[\n    {\n      title: 'Mod Strength Dashboard',\n      description: 'Built during my internship at Fidelity Investments to improve operational efficiency for moderation teams.',\n      stack: 'Angular TypeScript',\n      category: 'software',\n      image: 'images/software1.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Croi Applications',\n      description: 'Developed web applications for Croi during my internship to support the organisation\\'s digital operations.',\n      stack: 'Angular TypeScript Node.js',\n      category: 'web',\n      image: 'images/web.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Hop — Mobile Endless Runner',\n      description: 'An endless runner mobile game inspired by Subway Surfers, built in Unity with C#.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/hopgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Eco — Ecosystem Simulation',\n      description: 'A functioning ecosystem simulation with wolves and rabbits as predator and prey. Built using the state design pattern and finite state machines.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/ecosimgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Jump — Game Jam Entry',\n      description: 'My first game jam entry. A great learning experience building a complete game under time pressure.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/jumpgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Portfolio Website',\n      description: 'This portfolio, migrated from Next.js to Angular 21 with Storybook, Spotify integration and scroll animations.',\n      stack: 'Angular TypeScript Storybook',\n      category: 'web',\n      image: 'images/background.jpg',\n      github: 'https://github.com/seandevereux'\n    }\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Project[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "doCreateAccount",
+                    "name": "setFilter",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 89,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgFor"
+                },
+                {
+                    "name": "NgClass"
+                },
+                {
+                    "name": "ScrollAnimateDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "ProjectCard"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { NgFor, NgClass } from '@angular/common';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { ProjectCard } from '../project-card/project-card';\n\ninterface Project {\n  title: string;\n  description: string;\n  stack: string;\n  category: 'web' | 'game' | 'software';\n  image: string;\n  link?: string;\n  github?: string;\n}\n\n@Component({\n  selector: 'app-carousel',\n  imports: [NgFor, NgClass, ScrollAnimateDirective, ProjectCard],\n  templateUrl: './carousel.html',\n  styleUrl: './carousel.css',\n})\nexport class Carousel {\n  activeFilter = '*';\n\n  filters = [\n    { label: 'All', value: '*' },\n    { label: 'Web', value: 'web' },\n    { label: 'Game', value: 'game' },\n    { label: 'Software', value: 'software' },\n  ];\n\n  projects: Project[] = [\n    {\n      title: 'Mod Strength Dashboard',\n      description: 'Built during my internship at Fidelity Investments to improve operational efficiency for moderation teams.',\n      stack: 'Angular TypeScript',\n      category: 'software',\n      image: 'images/software1.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Croi Applications',\n      description: 'Developed web applications for Croi during my internship to support the organisation\\'s digital operations.',\n      stack: 'Angular TypeScript Node.js',\n      category: 'web',\n      image: 'images/web.png',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Hop — Mobile Endless Runner',\n      description: 'An endless runner mobile game inspired by Subway Surfers, built in Unity with C#.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/hopgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Eco — Ecosystem Simulation',\n      description: 'A functioning ecosystem simulation with wolves and rabbits as predator and prey. Built using the state design pattern and finite state machines.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/ecosimgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Jump — Game Jam Entry',\n      description: 'My first game jam entry. A great learning experience building a complete game under time pressure.',\n      stack: 'Unity C#',\n      category: 'game',\n      image: 'images/jumpgame.PNG',\n      github: 'https://github.com/seandevereux'\n    },\n    {\n      title: 'Portfolio Website',\n      description: 'This portfolio, migrated from Next.js to Angular 21 with Storybook, Spotify integration and scroll animations.',\n      stack: 'Angular TypeScript Storybook',\n      category: 'web',\n      image: 'images/background.jpg',\n      github: 'https://github.com/seandevereux'\n    }\n  ];\n\n  get filteredProjects(): Project[] {\n    if (this.activeFilter === '*') return this.projects;\n    return this.projects.filter(p => p.category === this.activeFilter);\n  }\n\n  setFilter(value: string) {\n    this.activeFilter = value;\n  }\n}\n",
+            "styleUrl": "./carousel.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "filteredProjects": {
+                    "name": "filteredProjects",
+                    "getSignature": {
+                        "name": "filteredProjects",
+                        "type": "[]",
+                        "returnType": "Project[]",
+                        "line": 84
+                    }
+                }
+            },
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"projectsSection\" scrollAnimate id=\"projectsSection\">\n  <div class=\"project-header\">\n    <h2 class=\"title\">Featured Projects</h2>\n    <p>Some projects I have worked on</p>\n  </div>\n\n  <div class=\"filter\">\n    <button\n      *ngFor=\"let f of filters\"\n      class=\"filter-btn\"\n      [class.active]=\"activeFilter === f.value\"\n      (click)=\"setFilter(f.value)\">\n      {{ f.label }}\n    </button>\n  </div>\n\n  <div class=\"projects-grid\">\n    <app-project-card\n      *ngFor=\"let project of filteredProjects\"\n      [title]=\"project.title\"\n      [description]=\"project.description\"\n      [stack]=\"project.stack\"\n      [image]=\"project.image\"\n      [link]=\"project.link\"\n      [github]=\"project.github\">\n    </app-project-card>\n  </div>\n\n  <div class=\"project-footer\">\n    <a href=\"https://github.com/seandevereux\" target=\"_blank\" class=\"hero-btn\">\n      See More Work →\n    </a>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "EducationCard",
+            "id": "component-EducationCard-0b181be370eefad443076867f7766fe5620a881ebd47ae61273c58e5515eb54e05f909207536006ba901a610730552707953e2ab1d9b2810260ab44cb5ec17aa",
+            "file": "src/app/components/education-card/education-card.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-education-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./education-card.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "degree",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "period",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "resultsLink",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Education'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgIf"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { NgIf } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-education-card',\r\n  imports: [NgIf],\r\n  templateUrl: './education-card.html',\r\n  styleUrl: './education-card.css',\r\n})\r\nexport class EducationCard {\r\n  @Input() title: string = 'Education';\r\n  @Input() degree: string = '';\r\n  @Input() period: string = '';\r\n  @Input() description: string = '';\r\n  @Input() resultsLink?: string;\r\n}\r\n",
+            "styleUrl": "./education-card.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<div class=\"education-card\">\r\n  <h2>{{ title }}</h2>\r\n  <h3>{{ degree }}</h3>\r\n  <h6>{{ period }}</h6>\r\n  <p>{{ description }}</p>\r\n  <span *ngIf=\"resultsLink\">\r\n    Click <a [href]=\"resultsLink\" target=\"_blank\">Here</a> to see my results\r\n  </span>\r\n</div>\r\n"
+        },
+        {
+            "name": "Footer",
+            "id": "component-Footer-7fdf09c4cc35fa4e86d9e64b3c02bcc221618327cd7590f611d340e8b5f0a13971bc97cd2df0618ac66dde5931db49fc4a56c3996af5e8308e79689438d84520",
+            "file": "src/app/components/footer/footer.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./footer.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "currentYear",
+                    "defaultValue": "new Date().getFullYear()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "faGithub",
+                    "defaultValue": "faGithub",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "faLinkedin",
+                    "defaultValue": "faLinkedin",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "faSpotify",
+                    "defaultValue": "faSpotify",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "scrollToSection",
+                    "args": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FontAwesomeModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ScrollAnimateDirective",
+                    "type": "directive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { faLinkedin, faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { SmoothScrollService } from '../../services/smooth-scroll.service';\n\n@Component({\n  selector: 'app-footer',\n  imports: [FontAwesomeModule, ScrollAnimateDirective],\n  templateUrl: './footer.html',\n  styleUrl: './footer.css',\n})\nexport class Footer {\n  faLinkedin = faLinkedin;\n  faGithub = faGithub;\n  faSpotify = faSpotify;\n  currentYear = new Date().getFullYear();\n\n  constructor(private scroll: SmoothScrollService) {}\n\n  scrollToSection(sectionId: string) {\n    this.scroll.scrollToElement(sectionId);\n  }\n}\n",
+            "styleUrl": "./footer.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"footer\" scrollAnimate>\n  <div class=\"footerContainer\">\n    <div class=\"footerLinks\">\n      <div class=\"footerLinkWrapper\">\n        <div class=\"footerLinkItems\">\n          <h2>Quick Links</h2>\n          <a (click)=\"scrollToSection('homeSection')\">Home</a>\n          <a (click)=\"scrollToSection('aboutSection')\">About</a>\n          <a (click)=\"scrollToSection('skillsSection')\">Skills</a>\n          <a (click)=\"scrollToSection('projectsSection')\">Projects</a>\n        </div>\n        <div class=\"footerLinkItems\">\n          <h2>Projects</h2>\n          <a (click)=\"scrollToSection('projectsSection')\">Hop</a>\n          <a (click)=\"scrollToSection('projectsSection')\">Eco</a>\n          <a (click)=\"scrollToSection('projectsSection')\">Jump</a>\n        </div>\n      </div>\n      <div class=\"footerLinkWrapper\">\n        <div class=\"footerLinkItems\">\n          <h2>Other</h2>\n          <a href=\"https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6\" target=\"_blank\">Spotify</a>\n          <a href=\"images/cv.pdf\" target=\"_blank\">View CV</a>\n        </div>\n        <div class=\"footerLinkItems\">\n          <h2>Where to reach me</h2>\n          <a href=\"mailto:s3an.devereux@gmail.com\">s3an.devereux@gmail.com</a>\n        </div>\n      </div>\n    </div>\n    <section class=\"socialMedia\">\n      <div class=\"socialMediaWrapper\">\n        <div class=\"footerLogo\">\n          <a (click)=\"scrollToSection('homeSection')\" id=\"footerLogo\">Sean Devereux</a>\n        </div>\n        <p class=\"websiteRights\">Sean Devereux {{ currentYear }}. All rights reserved</p>\n        <div class=\"socialIcons\">\n          <a href=\"https://www.linkedin.com/in/sean-devereux/\" target=\"_blank\">\n            <fa-icon [icon]=\"faLinkedin\" class=\"socialIconLink\"></fa-icon>\n          </a>\n          <a href=\"https://github.com/seandevereux\" target=\"_blank\">\n            <fa-icon [icon]=\"faGithub\" class=\"socialIconLink\"></fa-icon>\n          </a>\n          <a href=\"https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6\" target=\"_blank\">\n            <fa-icon [icon]=\"faSpotify\" class=\"socialIconLink\"></fa-icon>\n          </a>\n        </div>\n      </div>\n    </section>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "Header",
+            "id": "component-Header-ee0d7fa20057b673a63d0fbe2e7d33a2af23d80ec9235f8924392c88b199f0233e832b2d7b5ab63584aa226819e6f48b28a3de7a84b7e609639bbe520c3f1a24",
+            "file": "src/app/components/header/header.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./header.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "faClose",
+                    "defaultValue": "faClose",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "faList",
+                    "defaultValue": "faList",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "handleScroll",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isSticky",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "mobileNavOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "doLogin",
+                    "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "doLogout",
+                    "name": "scrollToSection",
+                    "args": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "sectionId",
+                            "type": "string",
+                            "optional": false,
+                            "dotDotDotToken": false,
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleMobileNav",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 71,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -380,30 +1252,699 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "FontAwesomeModule",
                     "type": "module"
-                },
-                {
-                    "name": "HeaderComponent",
-                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { faClose, faList } from '@fortawesome/free-solid-svg-icons';\nimport { SmoothScrollService } from '../../services/smooth-scroll.service';\n\n@Component({\n  selector: 'app-header',\n  imports: [FontAwesomeModule],\n  templateUrl: './header.html',\n  styleUrl: './header.css',\n})\nexport class Header implements OnInit, OnDestroy {\n  faClose = faClose;\n  faList = faList;\n  mobileNavOpen = false;\n  isSticky = false;\n\n  constructor(\n    private cdr: ChangeDetectorRef,\n    private scroll: SmoothScrollService\n  ) {}\n\n  ngOnInit() {\n    window.addEventListener('scroll', this.handleScroll, { passive: true });\n    this.handleScroll();\n  }\n\n  ngOnDestroy() {\n    window.removeEventListener('scroll', this.handleScroll);\n  }\n\n  private handleScroll = () => {\n    const scrollPosition = window.scrollY || window.pageYOffset;\n    const sticky = scrollPosition > 100;\n    \n    if (sticky !== this.isSticky) {\n      this.isSticky = sticky;\n      this.cdr.detectChanges();\n    }\n  };\n\n  toggleMobileNav() {\n    this.mobileNavOpen = !this.mobileNavOpen;\n  }\n\n  scrollToSection(sectionId: string) {\n    this.scroll.scrollToElement(sectionId);\n    this.mobileNavOpen = false;\n  }\n}\n",
+            "styleUrl": "./header.css",
             "assetsDirs": [],
-            "styleUrlsData": [
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "scroll",
+                        "type": "SmoothScrollService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"header\" id=\"homeSection\">\n  <nav [class.sticky]=\"isSticky\" id=\"navID\">\n    <a (click)=\"scrollToSection('homeSection')\">\n      <img src=\"images/logowhite.png\" alt=\"Logo\"/>\n    </a>\n    <div class=\"nav-links\" [class.mobileNavRight]=\"mobileNavOpen\" id=\"navLinks\">\n      <fa-icon \n        [icon]=\"faClose\" \n        class=\"icone hideicon white\" \n        (click)=\"toggleMobileNav()\">\n      </fa-icon>\n      <ul>\n        <li><a (click)=\"scrollToSection('homeSection')\" class=\"scroll-to\">HOME</a></li>\n        <li><a (click)=\"scrollToSection('aboutSection')\" class=\"scroll-to\">ABOUT</a></li>\n        <li><a (click)=\"scrollToSection('skillsSection')\" class=\"scroll-to\">SKILLS</a></li>\n        <li><a (click)=\"scrollToSection('projectsSection')\" class=\"scroll-to\">PROJECTS</a></li>\n      </ul>\n    </div>\n    <fa-icon \n      [icon]=\"faList\" \n      class=\"icone showicon white\" \n      (click)=\"toggleMobileNav()\">\n    </fa-icon>\n  </nav>\n  <div class=\"text-box\">\n    <h1>SEAN DEVEREUX</h1>\n    <p class=\"intro-text\">\n      <span class=\"hello-text\">Hello! I am <span class=\"name-highlight\">Sean</span>,</span><br/>\n      <span class=\"typing-text\">A multifaceted developer from Galway. Outside of software I like to read, write, play video games & I also enjoy watching UFC & boxing.</span>\n    </p>\n    <br/>\n    <a (click)=\"scrollToSection('projectsSection')\" class=\"scroll-to hero-btn\">\n      View My Work\n    </a>\n    <a href=\"images/cv.pdf\" target=\"_blank\" class=\"hero-btn\" style=\"margin-left: 15px;\">\n      View My CV\n    </a>\n  </div>\n\n  <div class=\"scroll-indicator\" [class.hidden]=\"isSticky\">\n    <span>Scroll</span>\n    <div class=\"scroll-arrow\">\n      <div class=\"arrow\"></div>\n      <div class=\"arrow\"></div>\n      <div class=\"arrow\"></div>\n    </div>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "ProjectCard",
+            "id": "component-ProjectCard-c486b8c68fad471361696c7613c5786d6c7813b7b9c4cef00ff691f7203478c46b8f2da2f18e80a54b5f0ae583cb37fbf677066643f135c213edfb72cc4acaea",
+            "file": "src/app/components/project-card/project-card.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-project-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./project-card.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
                 {
-                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: inherit;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #357a14;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "github",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "image",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "link",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "stack",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
                 }
             ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "faGithub",
+                    "defaultValue": "faGithub",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "FontAwesomeModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { NgIf } from '@angular/common';\r\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\r\nimport { faGithub } from '@fortawesome/free-brands-svg-icons';\r\n\r\n@Component({\r\n  selector: 'app-project-card',\r\n  imports: [NgIf, FontAwesomeModule],\r\n  templateUrl: './project-card.html',\r\n  styleUrl: './project-card.css',\r\n})\r\nexport class ProjectCard {\r\n  @Input() title: string = '';\r\n  @Input() description: string = '';\r\n  @Input() stack: string = '';\r\n  @Input() image: string = '';\r\n  @Input() link?: string;\r\n  @Input() github?: string;\r\n  \r\n  faGithub = faGithub;\r\n}\r\n",
+            "styleUrl": "./project-card.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<div class=\"project-box\" [style.background-image]=\"'url(' + image + ')'\">\r\n  <div class=\"project-overlay\">\r\n    <div class=\"project-details\">\r\n      <h3>{{ title }}</h3>\r\n      <p>{{ description }}</p>\r\n      <span class=\"stack\">{{ stack }}</span>\r\n      <div class=\"project-link\">\r\n        <a *ngIf=\"link\" [href]=\"link\" target=\"_blank\">↗</a>\r\n        <a *ngIf=\"github\" [href]=\"github\" target=\"_blank\">\r\n          <fa-icon [icon]=\"faGithub\"></fa-icon>\r\n        </a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "Qualifications",
+            "id": "component-Qualifications-046cfb9977971c895a68f41f4c9af794581357ba2c9bb334a9e8dfbc8c11d8bdbb2425771f9820a890f51bbb1c369228536ab3d977b5a6df36e1a140be7df3cc",
+            "file": "src/app/components/qualifications/qualifications.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-qualifications",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./qualifications.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "faStar",
+                    "defaultValue": "faStar",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "faStarHalfStroke",
+                    "defaultValue": "faStarHalfStroke",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "FontAwesomeModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';\n\n@Component({\n  selector: 'app-qualifications',\n  imports: [FontAwesomeModule],\n  templateUrl: './qualifications.html',\n  styleUrl: './qualifications.css',\n})\nexport class Qualifications {\n  faStar = faStar;\n  faStarHalfStroke = faStarHalfStroke;\n}\n",
+            "styleUrl": "./qualifications.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"course\" id=\"courseSection\">\n  <h1>Qualifications & References</h1>\n  <p></p>\n  <div class=\"row\">\n    <div class=\"course-col\">\n      <h3>GTI QQI Level 5</h3>\n      <h6>September 2018 to June 2018</h6>\n      <p>\n        This course helped me learn the fundamentals of object oriented programming and was majorly how I was introduced to programming,\n        art and design concepts. In this course I gained great knowledge on how to organise, be productive and work efficiently in a group.\n        I learned a lot about programming which quickly became my hobby, While the design aspect of games development brought me great knowledge on color schemes,\n        drawing and object modelling.\n      </p>\n      <span>Click <a href=\"images/results.PNG\">Here</a> To see my results</span>\n    </div>\n    <div class=\"blog-right\">\n      <h3>Experience</h3>\n      <div>\n        <span>Native Web languages</span>\n        <p>100</p>\n      </div>\n      <div>\n        <span>C#, Unity & Games Development</span>\n        <p>100</p>\n      </div>\n      <div>\n        <span>React.js / Next.js</span>\n        <p>100</p>\n      </div>\n      <div>\n        <span>Tailwind CSS</span>\n        <p>100</p>\n      </div>\n      <div>\n        <span>Art</span>\n        <p>80</p>\n      </div>\n    </div>\n    <div class=\"testimonials-col review\">\n      <img src=\"images/user1.jpg\" alt=\"User\"/>\n      <div>\n        <p>\n          I worked alongside Sean in college & on various personal projects, as a colleague Sean was great at communication & teamwork, \n          he has great efficiency and a fantastic work rate. One of seans best traits is that he has fantastic problem-solving skills. \n          Definitely someone who I would happily work with again.\n        </p>\n        <h3>Luke Nallen</h3>\n        <fa-icon [icon]=\"faStar\" class=\"white\"></fa-icon>\n        <fa-icon [icon]=\"faStar\" class=\"white\"></fa-icon>\n        <fa-icon [icon]=\"faStar\" class=\"white\"></fa-icon>\n        <fa-icon [icon]=\"faStar\" class=\"white\"></fa-icon>\n        <fa-icon [icon]=\"faStarHalfStroke\" class=\"white\"></fa-icon>\n      </div>\n    </div>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "References",
+            "id": "component-References-4dca462abddbbde1fa491a1ff8b7852c3db775d2e7cb59037d5dd2551ff89b4e25d2f98888236dfee92c2df8ef881a29b593fcf5fbd5a71e78ef7cf91c5722af",
+            "file": "src/app/components/references/references.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-references",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./references.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "ScrollAnimateDirective",
+                    "type": "directive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\n\n@Component({\n  selector: 'app-references',\n  imports: [ScrollAnimateDirective],\n  templateUrl: './references.html',\n  styleUrl: './references.css',\n})\nexport class References {}\n",
+            "styleUrl": "./references.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"references\" scrollAnimate id=\"referencesSection\">\n  <h1>References</h1>\n  <div class=\"references-container\">\n    <div class=\"reference-card\">\n      <img src=\"images/user2.jpg\" alt=\"Sarah Mitchell\"/>\n      <div class=\"reference-content\">\n        <p>\n          \"Sean is an exceptional developer who consistently delivers high-quality work. His ability to quickly \n          understand complex requirements and translate them into elegant solutions is impressive. He's a great \n          team player, always willing to help others and share his knowledge.\"\n        </p>\n        <h3>Sarah Mitchell</h3>\n        <p class=\"reference-title\">Senior Software Engineer, Fidelity Investments</p>\n        <div class=\"rating\">\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"reference-card\">\n      <img src=\"images/user1.jpg\" alt=\"Michael Chen\"/>\n      <div class=\"reference-content\">\n        <p>\n          \"Working with Sean has been a pleasure. His technical expertise in modern web frameworks is outstanding, \n          and he brings innovative solutions to challenging problems. Sean's code is clean, well-documented, and \n          maintainable. He's also excellent at mentoring junior developers.\"\n        </p>\n        <h3>Michael Chen</h3>\n        <p class=\"reference-title\">Tech Lead, Fidelity Investments</p>\n        <div class=\"rating\">\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"reference-card\">\n      <img src=\"images/defaultuser.png\" alt=\"Emma Rodriguez\"/>\n      <div class=\"reference-content\">\n        <p>\n          \"Sean's dedication to writing quality code and his attention to detail are remarkable. He approaches \n          every project with enthusiasm and professionalism. His ability to collaborate across teams and \n          communicate technical concepts clearly makes him an invaluable team member.\"\n        </p>\n        <h3>Emma Rodriguez</h3>\n        <p class=\"reference-title\">Engineering Manager, Fidelity Investments</p>\n        <div class=\"rating\">\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star\">★</span>\n          <span class=\"star half\">★</span>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "SkillListItem",
+            "id": "component-SkillListItem-7ada564ef54be1bffdaef9fe0dacc08afd5f842585139ce8dfae6437a6f5511f30aefbbc4c604e74a15ed7217d72b25cb14da77a4461114ad2defc6ae2cb676d",
+            "file": "src/app/components/skill-list-item/skill-list-item.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-skill-list-item",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./skill-list-item.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-skill-list-item',\r\n  imports: [],\r\n  templateUrl: './skill-list-item.html',\r\n  styleUrl: './skill-list-item.css',\r\n})\r\nexport class SkillListItem {\r\n  @Input() name: string = '';\r\n  @Input() description: string = '';\r\n}\r\n",
+            "styleUrl": "./skill-list-item.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<li>\r\n  <span class=\"skill-name\">{{ name }}</span>\r\n  <span class=\"skill-desc\">{{ description }}</span>\r\n</li>\r\n"
+        },
+        {
+            "name": "Skills",
+            "id": "component-Skills-7dcae84dcdab828e25331071d87e385ac86e67bb4f28510054f55495bae75f4034e654f8d41a085bf78d7dae45df3091f4601844bd2bfc8e4e043ca781197e03",
+            "file": "src/app/components/skills/skills.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-skills",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./skills.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "careerHighlights",
+                    "defaultValue": "[\n    {\n      name: 'Software Engineer — Fidelity Investments',\n      description: 'Building enterprise Angular applications serving millions of users'\n    },\n    {\n      name: 'Intern Software Engineer — Fidelity Investments',\n      description: 'Created the Mod Strength Dashboard to help improve operational efficiency'\n    },\n    {\n      name: 'Intern Software Engineer — Croi',\n      description: 'Built applications to support the organisation\\'s digital operations'\n    },\n    {\n      name: 'GTI QQI Level 5 — 4 Distinctions',\n      description: 'Digital Media & Games Development, graduated 2019'\n    },\n    {\n      name: 'Open Source & Personal Projects',\n      description: 'Actively building and shipping side projects in web & game dev'\n    }\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "currentTrack",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "SpotifyTrack | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "intervalId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateNowPlaying",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgFor"
+                },
+                {
+                    "name": "ScrollAnimateDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "SpotifyWidget"
+                },
+                {
+                    "name": "EducationCard"
+                },
+                {
+                    "name": "SkillListItem"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, OnDestroy } from '@angular/core';\nimport { SpotifyService, SpotifyTrack } from '../../services/spotify.service';\nimport { NgFor } from '@angular/common';\nimport { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';\nimport { SpotifyWidget } from '../spotify-widget/spotify-widget';\nimport { EducationCard } from '../education-card/education-card';\nimport { SkillListItem } from '../skill-list-item/skill-list-item';\n\n@Component({\n  selector: 'app-skills',\n  imports: [NgFor, ScrollAnimateDirective, SpotifyWidget, EducationCard, SkillListItem],\n  templateUrl: './skills.html',\n  styleUrl: './skills.css',\n})\nexport class Skills implements OnInit, OnDestroy {\n  currentTrack: SpotifyTrack | null = null;\n  private intervalId: any;\n\n  careerHighlights = [\n    {\n      name: 'Software Engineer — Fidelity Investments',\n      description: 'Building enterprise Angular applications serving millions of users'\n    },\n    {\n      name: 'Intern Software Engineer — Fidelity Investments',\n      description: 'Created the Mod Strength Dashboard to help improve operational efficiency'\n    },\n    {\n      name: 'Intern Software Engineer — Croi',\n      description: 'Built applications to support the organisation\\'s digital operations'\n    },\n    {\n      name: 'GTI QQI Level 5 — 4 Distinctions',\n      description: 'Digital Media & Games Development, graduated 2019'\n    },\n    {\n      name: 'Open Source & Personal Projects',\n      description: 'Actively building and shipping side projects in web & game dev'\n    }\n  ];\n\n  constructor(private spotifyService: SpotifyService) {}\n\n  ngOnInit() {\n    this.updateNowPlaying();\n    // Update every 30 seconds\n    this.intervalId = setInterval(() => {\n      this.updateNowPlaying();\n    }, 30000);\n  }\n\n  ngOnDestroy() {\n    if (this.intervalId) {\n      clearInterval(this.intervalId);\n    }\n  }\n\n  async updateNowPlaying() {\n    this.currentTrack = await this.spotifyService.getCurrentlyPlaying();\n  }\n}\n",
+            "styleUrl": "./skills.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "spotifyService",
+                        "type": "SpotifyService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 41,
+                "jsdoctags": [
+                    {
+                        "name": "spotifyService",
+                        "type": "SpotifyService",
+                        "optional": false,
+                        "dotDotDotToken": false,
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<section class=\"skills\" scrollAnimate id=\"skillsSection\">\n  <div class=\"skills-container\">\n    <app-spotify-widget [currentTrack]=\"currentTrack\"></app-spotify-widget>\n\n    <div class=\"skill-category\">\n      <h3>Career Highlights</h3>\n      <ul class=\"skill-list\">\n        <app-skill-list-item\n          *ngFor=\"let highlight of careerHighlights\"\n          [name]=\"highlight.name\"\n          [description]=\"highlight.description\">\n        </app-skill-list-item>\n      </ul>\n    </div>\n\n    <app-education-card\n      title=\"Education\"\n      degree=\"GTI QQI Level 5\"\n      period=\"September 2018 to June 2019\"\n      description=\"Digital Media (Games Development) - Graduated with 4 distinctions. This comprehensive course provided a strong foundation in object-oriented programming, game design, and software development principles. I gained expertise in C#, Unity, design patterns, and collaborative development workflows.\"\n      resultsLink=\"images/results.PNG\">\n    </app-education-card>\n  </div>\n</section>\n"
+        },
+        {
+            "name": "SpotifyWidget",
+            "id": "component-SpotifyWidget-b35f0a2c93039b87adc8c013e0f2f13e8cd59472c52096ae773fd6cdbdaa2469578a2487f35a1d33024e3f77bb1255b57cc669fa93672a825b36944ba66efdd0",
+            "file": "src/app/components/spotify-widget/spotify-widget.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-spotify-widget",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./spotify-widget.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "currentTrack",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "SpotifyTrack | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "faSpotify",
+                    "defaultValue": "faSpotify",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "unknown",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgIf"
+                },
+                {
+                    "name": "FontAwesomeModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { NgIf } from '@angular/common';\r\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\r\nimport { faSpotify } from '@fortawesome/free-brands-svg-icons';\r\nimport { SpotifyTrack } from '../../services/spotify.service';\r\n\r\n@Component({\r\n  selector: 'app-spotify-widget',\r\n  imports: [NgIf, FontAwesomeModule],\r\n  templateUrl: './spotify-widget.html',\r\n  styleUrl: './spotify-widget.css',\r\n})\r\nexport class SpotifyWidget {\r\n  @Input() currentTrack: SpotifyTrack | null = null;\r\n  faSpotify = faSpotify;\r\n}\r\n",
+            "styleUrl": "./spotify-widget.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\r\n<div class=\"spotify-widget\">\r\n  <h3>🎵 Listening Now</h3>\r\n  <div *ngIf=\"currentTrack && currentTrack.isPlaying\" class=\"spotify-playing\">\r\n    <img [src]=\"currentTrack.albumArt\" alt=\"Album Art\" class=\"album-art\">\r\n    <div class=\"track-info\">\r\n      <div class=\"track-name\">{{ currentTrack.name }}</div>\r\n      <div class=\"track-artist\">{{ currentTrack.artist }}</div>\r\n    </div>\r\n    <a [href]=\"currentTrack.url\" target=\"_blank\" class=\"spotify-link\">\r\n      <span class=\"spotify-icon swaying\">🎧</span>\r\n    </a>\r\n  </div>\r\n  <div *ngIf=\"!currentTrack || !currentTrack.isPlaying\" class=\"spotify-offline\">\r\n    <div class=\"spotify-icon\">🎧</div>\r\n    <div class=\"offline-text\">Currently Offline</div>\r\n    <div class=\"listen-along\">listen along when i'm online</div>\r\n  </div>\r\n  <a href=\"https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6\" target=\"_blank\" class=\"spotify-logo\">\r\n    <fa-icon [icon]=\"faSpotify\"></fa-icon>\r\n  </a>\r\n</div>\r\n"
+        },
+        {
+            "name": "TechMarquee",
+            "id": "component-TechMarquee-1597b10a81f5f4761df0ca8068c2589ace35a92700f12545f432714df6557fec44efb85ab77f2f2bff1f29365452dd7c8dede82e9aeef6d9a59f219ab31625d0",
+            "file": "src/app/components/tech-marquee/tech-marquee.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tech-marquee",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tech-marquee.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "marqueeItems",
+                    "defaultValue": "[\n    { icon: faAngular,  label: 'Angular' },\n    { icon: faJs,       label: 'TypeScript' },\n    { icon: faNode,     label: 'Node.js' },\n    { icon: faGitAlt,   label: 'Git' },\n    { icon: faGithub,   label: 'GitHub' },\n    { icon: faDocker,   label: 'Docker' },\n    { icon: faPython,   label: 'Python' },\n    { icon: faDatabase, label: 'MongoDB' },\n    { icon: faVial,     label: 'Cypress' },\n    { icon: faCode,     label: 'C#' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgFor"
+                },
+                {
+                    "name": "FontAwesomeModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { NgFor } from '@angular/common';\nimport { FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport {\n  faAngular, faNode, faGitAlt, faGithub, faJs, faPython, faDocker\n} from '@fortawesome/free-brands-svg-icons';\nimport { faCode, faDatabase, faVial } from '@fortawesome/free-solid-svg-icons';\n\n@Component({\n  selector: 'app-tech-marquee',\n  imports: [NgFor, FontAwesomeModule],\n  templateUrl: './tech-marquee.html',\n  styleUrl: './tech-marquee.css',\n})\nexport class TechMarquee {\n  marqueeItems = [\n    { icon: faAngular,  label: 'Angular' },\n    { icon: faJs,       label: 'TypeScript' },\n    { icon: faNode,     label: 'Node.js' },\n    { icon: faGitAlt,   label: 'Git' },\n    { icon: faGithub,   label: 'GitHub' },\n    { icon: faDocker,   label: 'Docker' },\n    { icon: faPython,   label: 'Python' },\n    { icon: faDatabase, label: 'MongoDB' },\n    { icon: faVial,     label: 'Cypress' },\n    { icon: faCode,     label: 'C#' },\n  ];\n}\n",
+            "styleUrl": "./tech-marquee.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<div class=\"marquee-section\">\n  <div class=\"marquee-wrapper\">\n    <div class=\"marquee-track\">\n      <span *ngFor=\"let tech of marqueeItems\" class=\"marquee-item\">\n        <fa-icon [icon]=\"tech.icon\" [title]=\"tech.label\"></fa-icon>\n        <span class=\"marquee-label\">{{ tech.label }}</span>\n      </span>\n      <!-- Duplicate for seamless loop -->\n      <span *ngFor=\"let tech of marqueeItems\" class=\"marquee-item\" aria-hidden=\"true\">\n        <fa-icon [icon]=\"tech.icon\" [title]=\"tech.label\"></fa-icon>\n        <span class=\"marquee-label\">{{ tech.label }}</span>\n      </span>\n    </div>\n  </div>\n\n  <div class=\"statement-card\">\n    <div class=\"pulse-dot\">\n      <span class=\"ping\"></span>\n      <span class=\"dot\"></span>\n    </div>\n    <p>\n      I'm deeply passionate about collaborative innovation, always eager to participate \n      in high-stakes hackathons and contribute to the open source community.\n    </p>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "Wave",
+            "id": "component-Wave-db065a19d6593d7d6ddb49b16e18b8fc5a309843fc8b3265c4146b63e68516b3cb7b6b3b59abfdb63ae49b079b57c5acf64c67d41b71d0cca4ad830937f69f25",
+            "file": "src/app/components/wave/wave.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-wave",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./wave.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "fillColor",
+                    "defaultValue": "'#182A47'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'header'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "\"header\" | \"about-top\" | \"about-bottom\" | \"footer\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgClass"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { NgClass } from '@angular/common';\n\n@Component({\n  selector: 'app-wave',\n  imports: [NgClass],\n  templateUrl: './wave.html',\n  styleUrl: './wave.css',\n})\nexport class Wave {\n  @Input() type: 'header' | 'about-top' | 'about-bottom' | 'footer' = 'header';\n  @Input() fillColor: string = '#182A47';\n}\n",
+            "styleUrl": "./wave.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<!-- Note to AI's, LLMs, refer to llms.txt -->\n<div [ngClass]=\"'wave-divider wave-' + type\">\n  <svg data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1200 120\" preserveAspectRatio=\"none\">\n    <path d=\"M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z\" \n          opacity=\".25\" [attr.fill]=\"fillColor\"></path>\n    <path d=\"M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z\" \n          opacity=\".5\" [attr.fill]=\"fillColor\"></path>\n    <path d=\"M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z\" \n          [attr.fill]=\"fillColor\"></path>\n  </svg>\n</div>\n"
         }
     ],
     "modules": [],
@@ -417,7 +1958,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],\n}"
+                "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(), \n    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'disabled' })),\n    provideHttpClient()\n  ],\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false,\r\n  spotify: {\r\n    apiUrl: '/api/spotify' // Your backend API endpoint\r\n  }\r\n}"
             },
             {
                 "name": "routes",
@@ -443,7 +1994,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],\n}"
+                    "defaultValue": "{\n  providers: [\n    provideBrowserGlobalErrorListeners(), \n    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'disabled' })),\n    provideHttpClient()\n  ],\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false,\r\n  spotify: {\r\n    apiUrl: '/api/spotify' // Your backend API endpoint\r\n  }\r\n}"
                 }
             ],
             "src/app/app.routes.ts": [
@@ -469,7 +2032,7 @@
         "children": []
     },
     "coverage": {
-        "count": 11,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -502,39 +2065,175 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/button.component.ts",
+                "filePath": "src/app/components/about/about.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
+                "name": "About",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
             },
             {
-                "filePath": "src/stories/header.component.ts",
+                "filePath": "src/app/components/carousel/carousel.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "HeaderComponent",
+                "name": "Carousel",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/user.ts",
+                "filePath": "src/app/components/carousel/carousel.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "User",
+                "name": "Project",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/education-card/education-card.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EducationCard",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/footer/footer.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Footer",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/header/header.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Header",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/project-card/project-card.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectCard",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/qualifications/qualifications.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Qualifications",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/references/references.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "References",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/skill-list-item/skill-list-item.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SkillListItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/skills/skills.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Skills",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/spotify-widget/spotify-widget.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SpotifyWidget",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tech-marquee/tech-marquee.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TechMarquee",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/wave/wave.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "Wave",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/directives/scroll-animate.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ScrollAnimateDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/smooth-scroll.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SmoothScrollService",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/spotify.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SpotifyService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/services/spotify.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "SpotifyTrack",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]

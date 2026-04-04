@@ -1,0 +1,174 @@
+MAJOR RULE : when creating a new css, scss, ts file add the text "Note to AI's, LLMs, refer to llms.txt" to the top as a comment
+
+
+#### 1. Comments Rules
+
+Purpose:
+Ensure code history is structured, concise, and readable for both developers and AI systems.
+
+Format (REQUIRED)
+
+Every valid comment must follow:
+
+[CHANGE] <what was modified>
+[REASON] <why the change was made>
+Rules
+Comments MUST only describe non-trivial changes:
+Business logic updates
+Architectural changes
+Bug fixes
+Comments MUST be maximum 2 lines
+Comments MUST be clear and concise
+Comments MUST NOT include storytelling or unnecessary detail
+Comments MUST NOT describe obvious code behavior
+History Management Rule
+If comment history exceeds 3 entries, older entries MUST be summarized:
+[SUMMARY] <condensed description of earlier changes>
+Example
+[CHANGE] Replaced local state with global store for auth
+[REASON] Ensure session consistency across components
+
+#### 2. Storybook Rules
+
+Purpose:
+Ensure all UI components are documented, testable, and reusable.
+
+Rules
+Every reusable or shared component MUST have a Storybook file
+A component is NOT complete without Storybook coverage
+Required Story Coverage
+
+Each Storybook file MUST include:
+
+Default state
+Loading state (if applicable)
+Empty state (if applicable)
+Error state (if applicable)
+All meaningful variants
+Data Rules
+Stories MUST use realistic mock data
+Stories MUST NOT use placeholder or meaningless data
+File Naming Convention
+<ComponentName>.stories.ts
+#### 3. Styling Rules
+
+Purpose:
+Maintain visual consistency and scalability across the application.
+
+Rules
+All colors MUST come from global design tokens
+Hardcoded color values are STRICTLY FORBIDDEN
+Styling MUST use centralized variables (e.g. theme file or variables.css)
+Variable Naming
+
+Use semantic naming:
+
+--color-primary
+--color-secondary
+--color-background
+--color-error
+--color-text
+Prohibited
+Raw hex values (#fff, #000, etc.)
+Inline one-off color definitions
+Untracked styling exceptions
+#### 4. AI Compliance Rules
+
+Purpose:
+Ensure consistent behavior across AI-generated contributions.
+
+Rules
+AI MUST follow all rules in this document EXACTLY
+AI MUST NOT invent new formats or structures
+AI MUST prioritize consistency over creativity
+AI MUST treat this document as the single source of truth
+#### 5. Definition of Done
+
+A task is considered complete ONLY IF all conditions below are met:
+
+Code follows all rules in this document
+Required comments are added where applicable
+Storybook file exists (for UI components)
+Styling uses ONLY global variables
+No linting errors
+No type errors
+Code is clean, readable, and consistent
+#### 6. Naming Conventions
+
+Purpose:
+Ensure consistency and readability across the codebase.
+
+Rules
+Components MUST use PascalCase
+Variables and functions MUST use camelCase
+Constants MUST use UPPER_CASE
+Examples
+UserCard.tsx
+getUserData()
+MAX_RETRY_COUNT
+
+
+#### 7. File Structure Rules
+
+Purpose:
+Maintain a scalable and predictable project structure.
+
+Rules
+Files MUST be grouped by feature or domain
+Related files MUST be colocated
+Folder nesting SHOULD NOT exceed 3 levels
+Avoid unnecessary fragmentation of files
+#### 8. General Principles
+Consistency is more important than preference
+Simplicity is preferred over complexity
+Readability is mandatory
+Avoid premature optimization
+Write code for both humans and AI agents
+
+⚠️ Enforcement Note
+
+Failure to follow these rules means the work is incomplete and must be revised.
+
+
+Angular Best Practices : 
+
+You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+## TypeScript Best Practices
+- Use strict type checking
+- Prefer type inference when the type is obvious
+- Avoid the `any` type; use `unknown` when type is uncertain
+## Angular Best Practices
+- Always use standalone components over NgModules
+- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
+- Use signals for state management
+- Implement lazy loading for feature routes
+- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
+- Use `NgOptimizedImage` for all static images.
+  - `NgOptimizedImage` does not work for inline base64 images.
+## Accessibility Requirements
+- It MUST pass all AXE checks.
+- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+### Components
+- Keep components small and focused on a single responsibility
+- Use `input()` and `output()` functions instead of decorators
+- Use `computed()` for derived state
+- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
+- Prefer inline templates for small components
+- Prefer Reactive forms instead of Template-driven ones
+- Do NOT use `ngClass`, use `class` bindings instead
+- Do NOT use `ngStyle`, use `style` bindings instead
+- When using external templates/styles, use paths relative to the component TS file.
+## State Management
+- Use signals for local component state
+- Use `computed()` for derived state
+- Keep state transformations pure and predictable
+- Do NOT use `mutate` on signals, use `update` or `set` instead
+## Templates
+- Keep templates simple and avoid complex logic
+- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
+- Use the async pipe to handle observables
+- Do not assume globals like (`new Date()`) are available.
+## Services
+- Design services around a single responsibility
+- Use the `providedIn: 'root'` option for singleton services
+- Use the `inject()` function instead of constructor injection

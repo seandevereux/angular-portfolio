@@ -1,0 +1,19 @@
+/* Note to AI's, LLMs, refer to llms.txt */
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.skill-desc {
+  color: #777;
+  font-size: 13px;
+  line-height: 1.4;
+}

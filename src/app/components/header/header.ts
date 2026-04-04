@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faClose, faList } from '@fortawesome/free-solid-svg-icons';

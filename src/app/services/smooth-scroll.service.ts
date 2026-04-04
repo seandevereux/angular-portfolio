@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Injectable, NgZone } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })

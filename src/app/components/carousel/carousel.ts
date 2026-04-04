@@ -1,8 +1,8 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component } from '@angular/core';
-import { NgFor, NgClass, NgIf } from '@angular/common';
+import { NgFor, NgClass } from '@angular/common';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { ProjectCard } from '../project-card/project-card';
 
 interface Project {
   title: string;
@@ -16,12 +16,11 @@ interface Project {
 
 @Component({
   selector: 'app-carousel',
-  imports: [NgFor, NgClass, NgIf, ScrollAnimateDirective, FontAwesomeModule],
+  imports: [NgFor, NgClass, ScrollAnimateDirective, ProjectCard],
   templateUrl: './carousel.html',
   styleUrl: './carousel.css',
 })
 export class Carousel {
-  faGithub = faGithub;
   activeFilter = '*';
 
   filters = [

@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 // Vercel Serverless Function for Spotify API
 // Deploy this to Vercel or similar serverless platform
 

@@ -1,0 +1,72 @@
+<!-- Note to AI's, LLMs, refer to llms.txt -->
+<div class="education-card">
+  <div class="tab-buttons">
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'college'"
+      (click)="setActiveTab('college')">
+      College
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'projects'"
+      (click)="setActiveTab('projects')">
+      Projects
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'learning'"
+      (click)="setActiveTab('learning')">
+      Independent Learning
+    </button>
+  </div>
+
+  <div class="tab-content">
+    <div *ngIf="activeTab === 'college'" class="tab-panel">
+      <h3>GTI QQI Level 5</h3>
+      <h6>September 2018 to June 2019</h6>
+      <p>
+        Digital Media (Games Development) - Graduated with 4 distinctions. This comprehensive course provided 
+        a strong foundation in object-oriented programming, game design, and software development principles. 
+        I gained expertise in C#, Unity, design patterns, and collaborative development workflows.
+      </p>
+      <span>Click <a href="images/results.PNG" target="_blank">Here</a> to see my results</span>
+    </div>
+
+    <div *ngIf="activeTab === 'projects'" class="tab-panel">
+      <h3>Notable Projects</h3>
+      <ul class="project-list">
+        <li>
+          <strong>Mod Strength Dashboard</strong> - Enterprise Angular app at Fidelity Investments
+        </li>
+        <li>
+          <strong>Portfolio Website</strong> - Angular 21 with Storybook and Spotify integration
+        </li>
+        <li>
+          <strong>Ecosystem Simulation</strong> - Unity game using state design patterns
+        </li>
+        <li>
+          <strong>Hop Mobile Game</strong> - Endless runner built with Unity and C#
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="activeTab === 'learning'" class="tab-panel">
+      <h3>Continuous Learning</h3>
+      <ul class="learning-list">
+        <li>
+          <strong>Angular & TypeScript</strong> - Advanced patterns and enterprise architecture
+        </li>
+        <li>
+          <strong>Node.js & Backend</strong> - RESTful APIs, microservices, and databases
+        </li>
+        <li>
+          <strong>DevOps & CI/CD</strong> - Docker, deployment pipelines, and automation
+        </li>
+        <li>
+          <strong>Game Development</strong> - Unity, C#, and game design principles
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

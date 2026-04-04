@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 

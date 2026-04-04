@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Directive, ElementRef, OnInit, OnDestroy } from '@angular/core';
 
 @Directive({

@@ -1,0 +1,137 @@
+/* Note to AI's, LLMs, refer to llms.txt */
+.education-card {
+  background: var(--primary-color);
+  color: white;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tab-buttons {
+  display: flex;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px 12px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.tab-btn.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: white;
+}
+
+.tab-content {
+  padding: 24px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.tab-panel {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-panel h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.tab-panel h6 {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.tab-panel p {
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.tab-panel span {
+  color: white;
+  font-size: 13px;
+}
+
+.tab-panel a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.project-list,
+.learning-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-list li,
+.learning-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.project-list li:last-child,
+.learning-list li:last-child {
+  border-bottom: none;
+}
+
+.project-list strong,
+.learning-list strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}

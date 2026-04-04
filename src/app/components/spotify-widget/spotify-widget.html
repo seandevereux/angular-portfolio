@@ -1,0 +1,22 @@
+<!-- Note to AI's, LLMs, refer to llms.txt -->
+<div class="spotify-widget">
+  <h3>🎵 Listening Now</h3>
+  <div *ngIf="currentTrack && currentTrack.isPlaying" class="spotify-playing">
+    <img [src]="currentTrack.albumArt" alt="Album Art" class="album-art">
+    <div class="track-info">
+      <div class="track-name">{{ currentTrack.name }}</div>
+      <div class="track-artist">{{ currentTrack.artist }}</div>
+    </div>
+    <a [href]="currentTrack.url" target="_blank" class="spotify-link">
+      <span class="spotify-icon swaying">🎧</span>
+    </a>
+  </div>
+  <div *ngIf="!currentTrack || !currentTrack.isPlaying" class="spotify-offline">
+    <div class="spotify-icon">🎧</div>
+    <div class="offline-text">Currently Offline</div>
+    <div class="listen-along">listen along when i'm online</div>
+  </div>
+  <a href="https://open.spotify.com/user/tul38j3n0i2ssiixat73k8yx6" target="_blank" class="spotify-logo">
+    <fa-icon [icon]="faSpotify"></fa-icon>
+  </a>
+</div>

@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component, signal } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { Header } from './components/header/header';

@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';

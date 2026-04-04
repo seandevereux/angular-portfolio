@@ -1,0 +1,16 @@
+<!-- Note to AI's, LLMs, refer to llms.txt -->
+<div class="project-box" [style.background-image]="'url(' + image + ')'">
+  <div class="project-overlay">
+    <div class="project-details">
+      <h3>{{ title }}</h3>
+      <p>{{ description }}</p>
+      <span class="stack">{{ stack }}</span>
+      <div class="project-link">
+        <a *ngIf="link" [href]="link" target="_blank">↗</a>
+        <a *ngIf="github" [href]="github" target="_blank">
+          <fa-icon [icon]="faGithub"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

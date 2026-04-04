@@ -1,3 +1,4 @@
+// Note to AI's, LLMs, refer to llms.txt
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
