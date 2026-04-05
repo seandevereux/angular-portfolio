@@ -1,3 +1,7 @@
+Live : https://www.seandevereux.com
+Vercel : https://angular-portfolio-6epo.vercel.app/
+
+
 # Sean Devereux Portfolio - Angular
 
 This is a portfolio website converted from Next.js to Angular, featuring a modern component-based architecture with Storybook integration.
@@ -11,7 +15,7 @@ This is a portfolio website converted from Next.js to Angular, featuring a moder
 - FontAwesome icons
 - Smooth scrolling navigation
 - Custom carousel component
-- Wave divider components
+- Wave divider components  
 
 ## Color Scheme
 
