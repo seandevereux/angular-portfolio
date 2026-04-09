@@ -12,9 +12,7 @@
         </div>
         <div class="footerLinkItems">
           <h2>Projects</h2>
-          <a (click)="scrollToSection('projectsSection')">Hop</a>
-          <a (click)="scrollToSection('projectsSection')">Eco</a>
-          <a (click)="scrollToSection('projectsSection')">Jump</a>
+          <a *ngFor="let project of projects" (click)="scrollToSection('projectsSection')">{{ project.title }}</a>
         </div>
       </div>
       <div class="footerLinkWrapper">

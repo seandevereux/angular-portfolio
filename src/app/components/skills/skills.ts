@@ -67,6 +67,7 @@ export class Skills implements OnInit, OnDestroy {
   async updateNowPlaying() {
     try {
       const track = await this.spotifyService.getCurrentlyPlaying();
+      
       this.zone.run(() => {
         this.currentTrack = track;
         this.cdr.detectChanges();

@@ -15,8 +15,8 @@ export class ProjectCard {
   @Input() description: string = '';
   @Input() stack: string = '';
   @Input() image: string = '';
-  @Input() link?: string;
-  @Input() github?: string;
+  @Input() link?: string | null;
+  @Input() github?: string | null;
   
   faGithub = faGithub;
 }
