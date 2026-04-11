@@ -78,6 +78,8 @@
 .spotify-icon {
   font-size: 48px;
   display: inline-block;
+  -webkit-text-stroke: 2px transparent;
+  text-stroke: 2px transparent;
 }
 
 .spotify-icon.swaying {
