@@ -3,19 +3,22 @@
   background: white;
   color: black;
   padding: 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
   border: 2px solid var(--primary-color);
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .education-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(221, 52, 0, 0.2);
 }
 
 .tab-buttons {
@@ -29,7 +32,7 @@
 
 .tab-btn {
   flex: 1;
-  padding: 14px 12px;
+  padding: 16px 12px;
   background: white;
   border: none;
   border-right: 2px solid var(--primary-color);
@@ -37,22 +40,23 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--transition-smooth);
   position: relative;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 .tab-btn:first-child {
-  border-top-left-radius: 10px;
+  border-top-left-radius: 14px;
 }
 
 .tab-btn:last-child {
-  border-top-right-radius: 10px;
+  border-top-right-radius: 14px;
   border-right: none;
 }
 
 .tab-btn:hover {
-  background: rgba(220, 38, 38, 0.05);
+  background: rgba(221, 52, 0, 0.05);
   color: var(--primary-color);
 }
 
@@ -66,10 +70,19 @@
   padding: 24px;
   flex-grow: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .tab-panel {
   animation: fadeIn 0.3s ease;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 @keyframes fadeIn {
@@ -84,9 +97,15 @@
 }
 
 .tab-panel h3 {
+  font-family: 'Playfair Display', serif;
   color: black;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  letter-spacing: -0.3px;
 }
 
 .tab-panel h6 {
@@ -94,6 +113,9 @@
   margin-bottom: 16px;
   font-size: 13px;
   font-weight: 400;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .tab-panel p {
@@ -101,11 +123,20 @@
   line-height: 1.6;
   margin-bottom: 15px;
   font-size: 13px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .tab-panel span {
   color: black;
   font-size: 13px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .tab-panel a {
@@ -123,6 +154,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .project-list li,
@@ -132,6 +165,10 @@
   color: black;
   font-size: 13px;
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .project-list li:last-child,
@@ -145,4 +182,74 @@
   margin-bottom: 4px;
   font-size: 14px;
   color: black;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .tab-btn {
+    padding: 12px 8px;
+    font-size: 11px;
+  }
+
+  .tab-content {
+    padding: 16px;
+  }
+
+  .tab-panel h3 {
+    font-size: 16px;
+  }
+
+  .tab-panel h6 {
+    font-size: 12px;
+  }
+
+  .tab-panel p {
+    font-size: 12px;
+  }
+
+  .project-list li,
+  .learning-list li {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  .project-list strong,
+  .learning-list strong {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-btn {
+    padding: 10px 6px;
+    font-size: 10px;
+  }
+
+  .tab-content {
+    padding: 12px;
+  }
+
+  .tab-panel h3 {
+    font-size: 15px;
+  }
+
+  .tab-panel h6 {
+    font-size: 11px;
+  }
+
+  .tab-panel p {
+    font-size: 11px;
+  }
+
+  .project-list li,
+  .learning-list li {
+    font-size: 11px;
+  }
+
+  .project-list strong,
+  .learning-list strong {
+    font-size: 12px;
+  }
 }

@@ -6,20 +6,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.footerContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221, 52, 0, 0.3), transparent);
 }
 
 #footerLogo {
+  font-family: 'Playfair Display', serif;
   color: #fff;
   display: flex;
   align-items: center;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-  transition: all 0.35s ease-in-out;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: all 0.3s var(--transition-smooth);
 }
 
 #footerLogo:hover {
-  color: #ff4336;
+  color: var(--primary-color);
+  transform: translateY(-2px);
 }
 
 .footerLinks {
@@ -44,31 +59,38 @@
 }
 
 .footerLinkItems h2 {
+  font-family: 'Playfair Display', serif;
   margin-bottom: 16px;
   color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .footerLinkItems a {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   margin-bottom: 0.5rem;
-  transition: 0.3s ease-out;
+  font-size: 14px;
+  transition: all 0.3s var(--transition-smooth);
   cursor: pointer;
 }
 
 .footerLinkItems a:hover {
-  color: #ff4336;
+  color: var(--primary-color);
+  transform: translateX(4px);
 }
 
 .footerLinkItems p {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.5rem;
+  font-size: 14px;
 }
 
 .socialIconLink {
   color: #fff;
   font-size: 24px;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.3s var(--transition-smooth);
 }
 
 .socialMedia {
@@ -94,10 +116,12 @@
 
 .socialIconLink:hover {
   color: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 .websiteRights {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
 }
 
 @media screen and (max-width: 820px) {

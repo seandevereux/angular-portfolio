@@ -4,9 +4,25 @@
   padding: var(--section-padding);
   text-align: center;
   box-sizing: border-box;
+  background: #fff;
+  position: relative;
+}
+
+.references::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221, 52, 0, 0.2), transparent);
 }
 
 .references h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   margin-bottom: 60px;
 }
 
@@ -19,19 +35,19 @@
 .reference-card {
   background: var(--primary-color);
   color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(221, 52, 0, 0.2);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
   text-align: left;
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: flex-start;
 }
 
 .reference-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(221, 52, 0, 0.3);
 }
 
 .reference-card img {
@@ -41,6 +57,7 @@
   object-fit: cover;
   border: 3px solid white;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .reference-content {
@@ -48,23 +65,27 @@
 }
 
 .reference-card h3 {
+  font-family: 'Playfair Display', serif;
   color: white;
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .reference-card p {
-  color: white;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
   margin-bottom: 15px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .reference-title {
-  font-size: 13px;
+  font-size: 14px;
   opacity: 0.9;
   margin-top: 5px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .rating {
@@ -83,7 +104,7 @@
 
 @media (max-width: 768px) {
   .references {
-    width: 90%;
+    padding: 60px 5%;
   }
 
   .references-container {

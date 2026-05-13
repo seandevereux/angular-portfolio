@@ -1,12 +1,19 @@
 /* Note to AI's, LLMs, refer to llms.txt */
 .project-box {
   position: relative;
-  height: 260px;
-  border-radius: 10px;
+  height: 280px;
+  border-radius: 16px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
   background-color: #1a1a1a;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
+}
+
+.project-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .project-overlay {
@@ -15,18 +22,18 @@
   background: rgba(0, 0, 0, 0);
   display: flex;
   align-items: flex-end;
-  padding: 24px;
-  transition: background 0.3s ease;
+  padding: 28px;
+  transition: background 0.3s var(--transition-smooth);
 }
 
 .project-box:hover .project-overlay {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
 }
 
 .project-details {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.3s var(--transition-smooth), transform 0.3s var(--transition-smooth);
 }
 
 .project-box:hover .project-details {
@@ -35,41 +42,97 @@
 }
 
 .project-details h3 {
-  font-size: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
   font-weight: 600;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: -0.2px;
 }
 
 .project-details p {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .stack {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--primary-color);
   font-weight: 500;
   letter-spacing: 0.5px;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .project-link {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .project-link a {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.3s var(--transition-smooth);
 }
 
 .project-link a:hover {
   color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .project-box {
+    height: 260px;
+  }
+
+  .project-overlay {
+    padding: 20px;
+  }
+
+  .project-details h3 {
+    font-size: 16px;
+  }
+
+  .project-details p {
+    font-size: 13px;
+  }
+
+  .stack {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-box {
+    height: 240px;
+  }
+
+  .project-overlay {
+    padding: 16px;
+  }
+
+  .project-details h3 {
+    font-size: 15px;
+  }
+
+  .project-details p {
+    font-size: 12px;
+  }
+
+  .stack {
+    font-size: 10px;
+  }
+
+  .project-link a {
+    font-size: 18px;
+  }
 }

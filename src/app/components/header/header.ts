@@ -1,5 +1,5 @@
 // Note to AI's, LLMs, refer to llms.txt
-import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faClose, faList } from '@fortawesome/free-solid-svg-icons';
 import { SmoothScrollService } from '../../services/smooth-scroll.service';
@@ -11,10 +11,18 @@ import { SmoothScrollService } from '../../services/smooth-scroll.service';
   styleUrl: './header.css',
 })
 export class Header implements OnInit, OnDestroy {
+  @ViewChild('typingElement', { static: false }) typingElement?: ElementRef;
+  
   faClose = faClose;
   faList = faList;
   mobileNavOpen = false;
   isSticky = false;
+  typedText = '';
+  
+  private fullText = 'A multifaceted developer from Galway. Outside of software I like to read, write, play video games & I also enjoy watching UFC & boxing.';
+  private typingSpeed = 40;
+  private currentIndex = 0;
+  private typingInterval?: number;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -24,10 +32,30 @@ export class Header implements OnInit, OnDestroy {
   ngOnInit() {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
     this.handleScroll();
+    this.startTyping();
   }
 
   ngOnDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
+    if (this.typingInterval) {
+      clearInterval(this.typingInterval);
+    }
+  }
+
+  private startTyping() {
+    setTimeout(() => {
+      this.typingInterval = window.setInterval(() => {
+        if (this.currentIndex < this.fullText.length) {
+          this.typedText += this.fullText[this.currentIndex];
+          this.currentIndex++;
+          this.cdr.detectChanges();
+        } else {
+          if (this.typingInterval) {
+            clearInterval(this.typingInterval);
+          }
+        }
+      }, this.typingSpeed);
+    }, 500);
   }
 
   private handleScroll = () => {

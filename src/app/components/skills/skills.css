@@ -4,9 +4,28 @@
   padding: var(--section-padding);
   text-align: center;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  position: relative;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(221, 52, 0, 0.2), transparent);
 }
 
 .skills h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   margin-bottom: 60px;
 }
 
@@ -16,30 +35,40 @@
   gap: 40px;
   text-align: left;
   align-items: stretch;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .skill-category {
   background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
+  font-family: 'Playfair Display', serif;
   color: var(--text-black);
-  margin-bottom: 25px;
-  font-size: 22px;
+  margin-bottom: 28px;
+  font-size: 24px;
+  font-weight: 600;
   text-align: center;
   flex-shrink: 0;
+  letter-spacing: -0.3px;
 }
 
 .education-card {
@@ -107,52 +136,71 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 8px 0 8px 16px;
+  padding: 12px 0 12px 18px;
   border-left: 3px solid var(--primary-color);
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.skill-list li:hover {
+  border-left-width: 4px;
+  padding-left: 20px;
+  background: rgba(221, 52, 0, 0.02);
 }
 
 .skill-name {
   font-weight: 600;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .skill-desc {
   color: #777;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {
   .skills {
-    width: 90%;
+    width: 100%;
+    padding: 40px 20px;
   }
 
   .skills-container {
     grid-template-columns: 1fr;
+    gap: 20px;
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
 
 .spotify-widget {
   background: #1DB954;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(29, 185, 84, 0.2);
+  transition: transform 0.3s var(--transition-smooth), box-shadow 0.3s var(--transition-smooth);
   color: white;
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .spotify-widget:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(29, 185, 84, 0.3);
 }
 
 .spotify-widget h3 {
+  font-family: 'Playfair Display', serif;
   color: white;
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: 16px;
+  margin-bottom: 16px;
   font-weight: 600;
   text-align: center;
+  letter-spacing: -0.2px;
 }
 
 .spotify-playing {
@@ -165,9 +213,9 @@
 .album-art {
   width: 120px;
   height: 120px;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .track-info {
@@ -245,6 +293,44 @@
   
   .spotify-widget {
     order: -1;
+  }
+
+  .skill-category {
+    padding: 20px;
+  }
+
+  .skill-category h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    width: 100%;
+    padding: 40px 15px;
+  }
+
+  .skills-container {
+    gap: 15px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .skill-category {
+    padding: 16px;
+  }
+
+  .skill-category h3 {
+    font-size: 16px;
+  }
+
+  .skill-name {
+    font-size: 13px;
+  }
+
+  .skill-desc {
+    font-size: 12px;
   }
 }
 
